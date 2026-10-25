@@ -1,0 +1,5 @@
+database,mode,detected,mechanisms,share_detected
+eicu,full,16,16,1.0
+eicu,table,7,16,0.4375
+mimic-iv,full,14,14,1.0
+mimic-iv,table,6,14,0.42857142857142855

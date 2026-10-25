@@ -1,0 +1,61 @@
+database,model,mechanism,description,comparison,AUROC clean,AUROC leaky,AUROC difference (95% CI),AUPRC difference (95% CI),Brier difference (95% CI),Calibration slope clean / leaky,p (AUROC),test stays
+MIMIC-IV,hgb,E01,Repeat stays of test patients in training,paired,0.904,0.906,+0.003 (+0.001 to +0.005),+0.008 (-0.001 to +0.017),-0.0005 (-0.0012 to +0.0003),1.06 / 1.10,0.016,8414
+MIMIC-IV,hgb,E01b,Row-level random split (as reported),as reported,0.885,0.88,-0.005 (-0.018 to +0.008),-0.024 (-0.064 to +0.015),+0.0005 (-0.0042 to +0.0063),1.00 / 1.00,0.44,11546
+MIMIC-IV,hgb,E02,Look-ahead: features from the first 48 h,paired,0.885,0.916,+0.031 (+0.025 to +0.037),+0.120 (+0.102 to +0.139),-0.0104 (-0.0120 to -0.0087),1.00 / 1.03,0.0,11491
+MIMIC-IV,hgb,E03,Clinical-time filter ignoring result availability,paired,0.885,0.89,+0.004 (+0.002 to +0.007),+0.013 (+0.004 to +0.022),-0.0012 (-0.0018 to -0.0005),1.00 / 1.02,0.0,11491
+MIMIC-IV,hgb,E04,Full totals of running infusions and ventilation,paired,0.885,0.889,+0.004 (+0.002 to +0.006),+0.013 (+0.006 to +0.020),-0.0009 (-0.0015 to -0.0004),1.00 / 1.02,0.004,11491
+MIMIC-IV,hgb,E05,Discharge fields and length of stay,paired,0.885,0.999,+0.113 (+0.103 to +0.122),+0.440 (+0.412 to +0.470),-0.0667 (-0.0707 to -0.0626),1.00 / 0.73,0.0,11491
+MIMIC-IV,hgb,E07,Same-admission billing codes / late diagnoses,paired,0.885,0.946,+0.061 (+0.053 to +0.069),+0.185 (+0.157 to +0.211),-0.0198 (-0.0226 to -0.0166),1.00 / 0.99,0.0,11491
+MIMIC-IV,hgb,E08,"Care limitation / code status, any time",paired,0.885,0.896,+0.011 (+0.007 to +0.015),+0.028 (+0.016 to +0.039),-0.0025 (-0.0034 to -0.0014),1.00 / 1.02,0.0,11491
+MIMIC-IV,hgb,E08b,Care limitation / code status before prediction (reference),paired,0.885,0.887,+0.001 (-0.000 to +0.003),+0.002 (-0.003 to +0.008),-0.0001 (-0.0005 to +0.0003),1.00 / 1.00,0.084,11491
+MIMIC-IV,hgb,E12,Feature selection on all rows,paired,0.867,0.867,+0.000 (+0.000 to +0.000),+0.000 (+0.000 to +0.000),+0.0000 (+0.0000 to +0.0000),1.00 / 1.00,1.0,11491
+MIMIC-IV,hgb,E13,SMOTE before the split,paired,0.88,0.89,+0.011 (+0.008 to +0.013),+0.017 (+0.009 to +0.024),-0.0017 (-0.0023 to -0.0011),1.00 / 1.04,0.0,11491
+MIMIC-IV,hgb,E13b,SMOTE before the split (as reported),as reported,0.88,0.986,+0.106 (+0.097 to +0.116),+0.470 (+0.441 to +0.501),-0.0308 (-0.0347 to -0.0263),1.00 / 1.31,0.0,20452
+MIMIC-IV,hgb,E15,Hyperparameters chosen on the test set,paired,0.886,0.887,+0.001 (-0.002 to +0.004),+0.004 (-0.005 to +0.012),-0.0005 (-0.0012 to +0.0002),0.94 / 1.07,0.608,11491
+MIMIC-IV,hgb,E16,Temporal validation on shifted dates (as reported),as reported,0.905,0.874,-0.031 (-0.043 to -0.018),-0.071 (-0.110 to -0.029),+0.0090 (+0.0039 to +0.0146),1.10 / 0.95,0.0,11492
+MIMIC-IV,logistic,E01,Repeat stays of test patients in training,paired,0.886,0.886,-0.000 (-0.001 to +0.001),-0.000 (-0.003 to +0.002),+0.0001 (-0.0001 to +0.0003),1.04 / 1.04,0.776,8414
+MIMIC-IV,logistic,E01b,Row-level random split (as reported),as reported,0.868,0.863,-0.004 (-0.019 to +0.010),-0.030 (-0.071 to +0.013),+0.0005 (-0.0042 to +0.0062),0.97 / 0.99,0.572,11546
+MIMIC-IV,logistic,E02,Look-ahead: features from the first 48 h,paired,0.868,0.902,+0.035 (+0.028 to +0.041),+0.117 (+0.099 to +0.135),-0.0102 (-0.0119 to -0.0084),0.97 / 1.00,0.0,11491
+MIMIC-IV,logistic,E03,Clinical-time filter ignoring result availability,paired,0.868,0.869,+0.001 (-0.001 to +0.003),+0.005 (+0.000 to +0.010),-0.0004 (-0.0009 to -0.0000),0.97 / 0.97,0.192,11491
+MIMIC-IV,logistic,E04,Full totals of running infusions and ventilation,paired,0.868,0.868,+0.000 (-0.000 to +0.001),-0.001 (-0.002 to +0.001),+0.0000 (-0.0001 to +0.0002),0.97 / 0.98,0.356,11491
+MIMIC-IV,logistic,E05,Discharge fields and length of stay,paired,0.868,0.998,+0.130 (+0.120 to +0.141),+0.486 (+0.457 to +0.514),-0.0707 (-0.0749 to -0.0664),0.97 / 1.00,0.0,11491
+MIMIC-IV,logistic,E07,Same-admission billing codes / late diagnoses,paired,0.868,0.939,+0.071 (+0.062 to +0.081),+0.205 (+0.181 to +0.230),-0.0210 (-0.0241 to -0.0180),0.97 / 1.02,0.0,11491
+MIMIC-IV,logistic,E08,"Care limitation / code status, any time",paired,0.868,0.88,+0.012 (+0.008 to +0.016),+0.028 (+0.018 to +0.037),-0.0024 (-0.0032 to -0.0014),0.97 / 0.99,0.0,11491
+MIMIC-IV,logistic,E08b,Care limitation / code status before prediction (reference),paired,0.868,0.869,+0.001 (+0.000 to +0.002),+0.002 (-0.001 to +0.004),-0.0001 (-0.0003 to +0.0001),0.97 / 0.98,0.028,11491
+MIMIC-IV,logistic,E11,Imputer and scaler fitted on all rows,paired,0.868,0.868,-0.000 (-0.000 to +0.000),+0.000 (-0.000 to +0.000),+0.0000 (-0.0000 to +0.0000),0.97 / 0.97,0.596,11491
+MIMIC-IV,logistic,E12,Feature selection on all rows,paired,0.846,0.846,+0.000 (+0.000 to +0.000),+0.000 (+0.000 to +0.000),-0.0000 (-0.0000 to +0.0000),1.00 / 1.00,1.0,11491
+MIMIC-IV,logistic,E13,SMOTE before the split,paired,0.859,0.862,+0.003 (+0.002 to +0.004),+0.004 (+0.001 to +0.007),-0.0019 (-0.0022 to -0.0014),0.81 / 0.82,0.0,11491
+MIMIC-IV,logistic,E13b,SMOTE before the split (as reported),as reported,0.859,0.871,+0.012 (-0.000 to +0.024),+0.363 (+0.331 to +0.393),-0.0074 (-0.0132 to -0.0016),0.81 / 1.03,0.056,20452
+MIMIC-IV,logistic,E15,Hyperparameters chosen on the test set,paired,0.867,0.868,+0.001 (-0.000 to +0.002),+0.004 (+0.001 to +0.007),-0.0001 (-0.0004 to +0.0001),1.00 / 0.97,0.1,11491
+MIMIC-IV,logistic,E16,Temporal validation on shifted dates (as reported),as reported,0.883,0.852,-0.031 (-0.046 to -0.018),-0.070 (-0.108 to -0.028),+0.0091 (+0.0033 to +0.0150),1.03 / 0.89,0.0,11492
+eICU-CRD,hgb,E01,Repeat stays of test patients in training,paired,0.877,0.878,+0.001 (-0.001 to +0.002),+0.000 (-0.006 to +0.005),+0.0001 (-0.0002 to +0.0004),1.08 / 1.09,0.352,20431
+eICU-CRD,hgb,E01b,Row-level random split (as reported),as reported,0.864,0.868,+0.003 (-0.007 to +0.014),+0.006 (-0.026 to +0.036),-0.0013 (-0.0047 to +0.0020),1.04 / 1.06,0.548,26025
+eICU-CRD,hgb,E02,Look-ahead: features from the first 48 h,paired,0.864,0.891,+0.027 (+0.023 to +0.031),+0.101 (+0.088 to +0.115),-0.0064 (-0.0073 to -0.0056),1.04 / 1.02,0.0,25792
+eICU-CRD,hgb,E03,Clinical-time filter ignoring result availability,paired,0.864,0.866,+0.002 (+0.000 to +0.003),+0.005 (-0.000 to +0.010),-0.0002 (-0.0005 to +0.0001),1.04 / 1.04,0.024,25792
+eICU-CRD,hgb,E05,Discharge fields and length of stay,paired,0.864,1.0,+0.136 (+0.128 to +0.143),+0.523 (+0.503 to +0.544),-0.0623 (-0.0649 to -0.0599),1.04 / 2.87,0.0,25792
+eICU-CRD,hgb,E06,Outcome column next to predictors,paired,0.864,0.999,+0.135 (+0.127 to +0.142),+0.516 (+0.496 to +0.537),-0.0577 (-0.0602 to -0.0555),1.04 / 0.81,0.0,25792
+eICU-CRD,hgb,E07,Same-admission billing codes / late diagnoses,paired,0.864,0.878,+0.014 (+0.011 to +0.017),+0.014 (+0.008 to +0.020),-0.0010 (-0.0014 to -0.0006),1.04 / 1.07,0.0,25792
+eICU-CRD,hgb,E08,"Care limitation / code status, any time",paired,0.864,0.9,+0.036 (+0.031 to +0.040),+0.108 (+0.096 to +0.123),-0.0080 (-0.0090 to -0.0071),1.04 / 1.02,0.0,25792
+eICU-CRD,hgb,E08b,Care limitation / code status before prediction (reference),paired,0.864,0.867,+0.003 (+0.001 to +0.005),+0.012 (+0.006 to +0.017),-0.0006 (-0.0009 to -0.0002),1.04 / 1.04,0.0,25792
+eICU-CRD,hgb,E09,APACHE first-day summaries in a 6-h model,paired,0.814,0.849,+0.034 (+0.029 to +0.040),+0.065 (+0.052 to +0.077),-0.0041 (-0.0048 to -0.0033),1.03 / 1.03,0.0,25792
+eICU-CRD,hgb,E12,Feature selection on all rows,paired,0.834,0.834,+0.000 (+0.000 to +0.000),+0.000 (+0.000 to +0.000),+0.0000 (+0.0000 to +0.0000),1.01 / 1.01,1.0,25792
+eICU-CRD,hgb,E13,SMOTE before the split,paired,0.85,0.858,+0.008 (+0.006 to +0.010),+0.014 (+0.010 to +0.018),-0.0009 (-0.0012 to -0.0006),1.02 / 1.06,0.0,25792
+eICU-CRD,hgb,E13b,SMOTE before the split (as reported),as reported,0.85,0.985,+0.135 (+0.126 to +0.141),+0.548 (+0.528 to +0.568),-0.0257 (-0.0285 to -0.0230),1.02 / 1.38,0.0,47020
+eICU-CRD,hgb,E15,Hyperparameters chosen on the test set,paired,0.864,0.865,+0.000 (-0.002 to +0.002),+0.003 (-0.004 to +0.009),-0.0001 (-0.0005 to +0.0003),0.98 / 1.01,0.704,25792
+eICU-CRD,hgb,E17,Internal test presented as external (as reported),as reported,0.865,0.864,-0.000 (-0.011 to +0.011),+0.010 (-0.021 to +0.042),+0.0017 (-0.0015 to +0.0051),1.03 / 1.04,0.936,25792
+eICU-CRD,logistic,E01,Repeat stays of test patients in training,paired,0.854,0.854,-0.000 (-0.001 to +0.000),-0.000 (-0.002 to +0.001),+0.0000 (-0.0000 to +0.0001),1.06 / 1.06,0.32,20431
+eICU-CRD,logistic,E01b,Row-level random split (as reported),as reported,0.84,0.845,+0.005 (-0.006 to +0.016),-0.001 (-0.032 to +0.026),-0.0012 (-0.0048 to +0.0024),1.01 / 1.03,0.372,26025
+eICU-CRD,logistic,E02,Look-ahead: features from the first 48 h,paired,0.84,0.873,+0.033 (+0.028 to +0.038),+0.107 (+0.095 to +0.119),-0.0072 (-0.0080 to -0.0063),1.01 / 0.99,0.0,25792
+eICU-CRD,logistic,E03,Clinical-time filter ignoring result availability,paired,0.84,0.841,+0.001 (-0.001 to +0.002),+0.003 (+0.001 to +0.006),-0.0002 (-0.0003 to -0.0000),1.01 / 1.00,0.348,25792
+eICU-CRD,logistic,E05,Discharge fields and length of stay,paired,0.84,1.0,+0.160 (+0.151 to +0.168),+0.561 (+0.541 to +0.581),-0.0655 (-0.0683 to -0.0630),1.01 / 4.28,0.0,25792
+eICU-CRD,logistic,E06,Outcome column next to predictors,paired,0.84,0.999,+0.159 (+0.150 to +0.167),+0.554 (+0.534 to +0.573),-0.0608 (-0.0636 to -0.0584),1.01 / 0.90,0.0,25792
+eICU-CRD,logistic,E07,Same-admission billing codes / late diagnoses,paired,0.84,0.841,+0.001 (-0.000 to +0.002),+0.005 (+0.003 to +0.008),-0.0004 (-0.0006 to -0.0002),1.01 / 1.01,0.128,25792
+eICU-CRD,logistic,E08,"Care limitation / code status, any time",paired,0.84,0.885,+0.045 (+0.039 to +0.050),+0.116 (+0.105 to +0.129),-0.0086 (-0.0096 to -0.0077),1.01 / 1.01,0.0,25792
+eICU-CRD,logistic,E08b,Care limitation / code status before prediction (reference),paired,0.84,0.845,+0.004 (+0.003 to +0.006),+0.010 (+0.006 to +0.014),-0.0007 (-0.0010 to -0.0004),1.01 / 1.00,0.0,25792
+eICU-CRD,logistic,E09,APACHE first-day summaries in a 6-h model,paired,0.784,0.829,+0.045 (+0.039 to +0.051),+0.072 (+0.061 to +0.082),-0.0041 (-0.0048 to -0.0033),0.96 / 1.00,0.0,25792
+eICU-CRD,logistic,E11,Imputer and scaler fitted on all rows,paired,0.84,0.84,+0.000 (-0.000 to +0.000),+0.000 (-0.000 to +0.001),-0.0000 (-0.0000 to +0.0000),1.01 / 1.01,0.528,25792
+eICU-CRD,logistic,E12,Feature selection on all rows,paired,0.813,0.813,+0.000 (+0.000 to +0.000),+0.000 (+0.000 to +0.000),-0.0000 (-0.0000 to +0.0000),1.02 / 1.02,1.0,25792
+eICU-CRD,logistic,E13,SMOTE before the split,paired,0.828,0.831,+0.002 (+0.002 to +0.003),+0.004 (+0.002 to +0.007),-0.0011 (-0.0013 to -0.0009),0.87 / 0.87,0.0,25792
+eICU-CRD,logistic,E13b,SMOTE before the split (as reported),as reported,0.828,0.836,+0.007 (-0.002 to +0.017),+0.410 (+0.390 to +0.431),+0.0013 (-0.0022 to +0.0044),0.87 / 1.02,0.156,47020
+eICU-CRD,logistic,E15,Hyperparameters chosen on the test set,paired,0.84,0.84,+0.000 (-0.000 to +0.000),+0.000 (-0.000 to +0.000),-0.0000 (-0.0000 to +0.0000),1.01 / 1.01,0.5,25792
+eICU-CRD,logistic,E17,Internal test presented as external (as reported),as reported,0.84,0.84,+0.001 (-0.011 to +0.013),+0.020 (-0.008 to +0.050),+0.0016 (-0.0017 to +0.0051),0.98 / 1.01,0.932,25792

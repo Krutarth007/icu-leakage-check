@@ -1,0 +1,69 @@
+database,mechanism,description,mode,expected,detected,false_alarm_types,flagged_types,worst_severity,checks
+mimic-iv,E00,Clean baseline,table,none,,,,,
+mimic-iv,E01b,Row-level random split (as reported),table,ENTITY_OVERLAP,True,,ENTITY_OVERLAP,critical,entity_overlap
+mimic-iv,E02,Look-ahead: features from the first 48 h,table,FUTURE_EVENT,False,,,,
+mimic-iv,E03,Clinical-time filter ignoring result availability,table,AVAILABILITY_LAG,False,,,,
+mimic-iv,E04,Full totals of running infusions and ventilation,table,INTERVAL_CROSSING,False,,,,
+mimic-iv,E05,Discharge fields and length of stay,table,"HINDSIGHT_VARIABLE, OUTCOME_ENCODING",True,,"HINDSIGHT_VARIABLE, OUTCOME_ENCODING, OUTCOME_PROXY",critical,"hindsight_features, single_feature_dominance"
+mimic-iv,E07,Same-admission billing codes / late diagnoses,table,"HINDSIGHT_VARIABLE, UNDATED_SOURCE",True,,"HINDSIGHT_VARIABLE, OUTCOME_PROXY",high,hindsight_features
+mimic-iv,E08,"Care limitation / code status, any time",table,OUTCOME_PROXY,True,,OUTCOME_PROXY,high,outcome_proxies
+mimic-iv,E08b,Care limitation / code status before prediction (reference),table,OUTCOME_PROXY,True,,OUTCOME_PROXY,high,outcome_proxies
+mimic-iv,E10,Patients already in AKI kept as positives,table,POST_OUTCOME_INSTANCE,False,,,,
+mimic-iv,E11,Imputer and scaler fitted on all rows,table,PREPROCESSING_FIT,False,,,,
+mimic-iv,E12,Feature selection on all rows,table,PREPROCESSING_FIT,False,,,,
+mimic-iv,E13b,SMOTE before the split (as reported),table,SYNTHETIC_IN_EVALUATION,True,,SYNTHETIC_IN_EVALUATION,critical,synthetic_samples
+mimic-iv,E14,Threshold chosen on the test set,table,EVALUATION_REUSE,False,,,,
+mimic-iv,E15,Hyperparameters chosen on the test set,table,EVALUATION_REUSE,False,,,,
+mimic-iv,E16,Temporal validation on shifted dates (as reported),table,SPLIT_ORDER,True,,"ENTITY_OVERLAP, SPLIT_ORDER",high,temporal_order
+mimic-iv,E00,Clean baseline,full,none,,,,,
+mimic-iv,E01b,Row-level random split (as reported),full,ENTITY_OVERLAP,True,,ENTITY_OVERLAP,critical,entity_overlap
+mimic-iv,E02,Look-ahead: features from the first 48 h,full,FUTURE_EVENT,True,,"AVAILABILITY_LAG, FUTURE_EVENT, INTERVAL_CROSSING",critical,event_timing
+mimic-iv,E03,Clinical-time filter ignoring result availability,full,AVAILABILITY_LAG,True,,AVAILABILITY_LAG,high,event_timing
+mimic-iv,E04,Full totals of running infusions and ventilation,full,INTERVAL_CROSSING,True,,INTERVAL_CROSSING,medium,event_timing
+mimic-iv,E05,Discharge fields and length of stay,full,"HINDSIGHT_VARIABLE, OUTCOME_ENCODING",True,,"HINDSIGHT_VARIABLE, OUTCOME_ENCODING, OUTCOME_PROXY",critical,"hindsight_features, single_feature_dominance"
+mimic-iv,E07,Same-admission billing codes / late diagnoses,full,"HINDSIGHT_VARIABLE, UNDATED_SOURCE",True,,"HINDSIGHT_VARIABLE, OUTCOME_PROXY, UNDATED_SOURCE",critical,hindsight_features
+mimic-iv,E08,"Care limitation / code status, any time",full,OUTCOME_PROXY,True,,OUTCOME_PROXY,high,outcome_proxies
+mimic-iv,E08b,Care limitation / code status before prediction (reference),full,OUTCOME_PROXY,True,,OUTCOME_PROXY,high,outcome_proxies
+mimic-iv,E10,Patients already in AKI kept as positives,full,POST_OUTCOME_INSTANCE,True,,"FUTURE_EVENT, POST_OUTCOME_INSTANCE",critical,outcome_timing
+mimic-iv,E11,Imputer and scaler fitted on all rows,full,PREPROCESSING_FIT,True,,PREPROCESSING_FIT,critical,preprocessing_fit
+mimic-iv,E12,Feature selection on all rows,full,PREPROCESSING_FIT,True,,PREPROCESSING_FIT,high,declarations
+mimic-iv,E13b,SMOTE before the split (as reported),full,SYNTHETIC_IN_EVALUATION,True,,SYNTHETIC_IN_EVALUATION,critical,synthetic_samples
+mimic-iv,E14,Threshold chosen on the test set,full,EVALUATION_REUSE,True,,EVALUATION_REUSE,medium,threshold_selection
+mimic-iv,E15,Hyperparameters chosen on the test set,full,EVALUATION_REUSE,True,,EVALUATION_REUSE,high,declarations
+mimic-iv,E16,Temporal validation on shifted dates (as reported),full,SPLIT_ORDER,True,,"ENTITY_OVERLAP, SPLIT_ORDER",high,temporal_order
+eicu,E00,Clean baseline,table,none,,,,,
+eicu,E01b,Row-level random split (as reported),table,ENTITY_OVERLAP,True,,ENTITY_OVERLAP,critical,entity_overlap
+eicu,E02,Look-ahead: features from the first 48 h,table,FUTURE_EVENT,False,,,,
+eicu,E03,Clinical-time filter ignoring result availability,table,AVAILABILITY_LAG,False,,,,
+eicu,E05,Discharge fields and length of stay,table,"HINDSIGHT_VARIABLE, OUTCOME_ENCODING",True,,"HINDSIGHT_VARIABLE, OUTCOME_ENCODING",critical,"hindsight_features, single_feature_dominance"
+eicu,E06,Outcome column next to predictors,table,OUTCOME_ENCODING,True,,"OUTCOME_ENCODING, SINGLE_FEATURE_DOMINANCE",high,hindsight_features
+eicu,E07,Same-admission billing codes / late diagnoses,table,"HINDSIGHT_VARIABLE, UNDATED_SOURCE",True,,HINDSIGHT_VARIABLE,medium,hindsight_features
+eicu,E08,"Care limitation / code status, any time",table,OUTCOME_PROXY,True,,OUTCOME_PROXY,high,outcome_proxies
+eicu,E08b,Care limitation / code status before prediction (reference),table,OUTCOME_PROXY,True,,OUTCOME_PROXY,high,outcome_proxies
+eicu,E09,APACHE first-day summaries in a 6-h model,table,FIRST_DAY_SUMMARY,False,,OUTCOME_ENCODING,,
+eicu,E09b,6-h model on a cohort selected at 24 h,table,COHORT_FUTURE_INFORMATION,False,,,,
+eicu,E10,Patients already in AKI kept as positives,table,POST_OUTCOME_INSTANCE,False,,,,
+eicu,E11,Imputer and scaler fitted on all rows,table,PREPROCESSING_FIT,False,,,,
+eicu,E12,Feature selection on all rows,table,PREPROCESSING_FIT,False,,,,
+eicu,E13b,SMOTE before the split (as reported),table,SYNTHETIC_IN_EVALUATION,True,,SYNTHETIC_IN_EVALUATION,critical,synthetic_samples
+eicu,E14,Threshold chosen on the test set,table,EVALUATION_REUSE,False,,,,
+eicu,E15,Hyperparameters chosen on the test set,table,EVALUATION_REUSE,False,,,,
+eicu,E17,Internal test presented as external (as reported),table,SITE_OVERLAP,True,,SITE_OVERLAP,critical,site_overlap
+eicu,E00,Clean baseline,full,none,,,,,
+eicu,E01b,Row-level random split (as reported),full,ENTITY_OVERLAP,True,,ENTITY_OVERLAP,critical,entity_overlap
+eicu,E02,Look-ahead: features from the first 48 h,full,FUTURE_EVENT,True,,"AVAILABILITY_LAG, FUTURE_EVENT",critical,event_timing
+eicu,E03,Clinical-time filter ignoring result availability,full,AVAILABILITY_LAG,True,,AVAILABILITY_LAG,high,event_timing
+eicu,E05,Discharge fields and length of stay,full,"HINDSIGHT_VARIABLE, OUTCOME_ENCODING",True,,"HINDSIGHT_VARIABLE, OUTCOME_ENCODING",critical,"hindsight_features, single_feature_dominance"
+eicu,E06,Outcome column next to predictors,full,OUTCOME_ENCODING,True,,"OUTCOME_ENCODING, SINGLE_FEATURE_DOMINANCE",critical,hindsight_features
+eicu,E07,Same-admission billing codes / late diagnoses,full,"HINDSIGHT_VARIABLE, UNDATED_SOURCE",True,,HINDSIGHT_VARIABLE,critical,hindsight_features
+eicu,E08,"Care limitation / code status, any time",full,OUTCOME_PROXY,True,,OUTCOME_PROXY,high,outcome_proxies
+eicu,E08b,Care limitation / code status before prediction (reference),full,OUTCOME_PROXY,True,,OUTCOME_PROXY,high,outcome_proxies
+eicu,E09,APACHE first-day summaries in a 6-h model,full,FIRST_DAY_SUMMARY,True,,"COHORT_FUTURE_INFORMATION, FIRST_DAY_SUMMARY",high,hindsight_features
+eicu,E09b,6-h model on a cohort selected at 24 h,full,COHORT_FUTURE_INFORMATION,True,,COHORT_FUTURE_INFORMATION,high,eligibility_timing
+eicu,E10,Patients already in AKI kept as positives,full,POST_OUTCOME_INSTANCE,True,,"FUTURE_EVENT, POST_OUTCOME_INSTANCE",critical,outcome_timing
+eicu,E11,Imputer and scaler fitted on all rows,full,PREPROCESSING_FIT,True,,PREPROCESSING_FIT,critical,preprocessing_fit
+eicu,E12,Feature selection on all rows,full,PREPROCESSING_FIT,True,,PREPROCESSING_FIT,high,declarations
+eicu,E13b,SMOTE before the split (as reported),full,SYNTHETIC_IN_EVALUATION,True,,SYNTHETIC_IN_EVALUATION,critical,synthetic_samples
+eicu,E14,Threshold chosen on the test set,full,EVALUATION_REUSE,True,,EVALUATION_REUSE,medium,threshold_selection
+eicu,E15,Hyperparameters chosen on the test set,full,EVALUATION_REUSE,True,,EVALUATION_REUSE,high,declarations
+eicu,E17,Internal test presented as external (as reported),full,SITE_OVERLAP,True,,SITE_OVERLAP,critical,site_overlap

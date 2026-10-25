@@ -1,0 +1,4 @@
+database,value_type,values_charted_first_24h,late_arrivals,late_arrival_share
+eicu,measured value,3991447,84818,0.0212499
+mimic-iv,interval record completion,227102,18125,0.07981
+mimic-iv,measured value,10650625,279253,0.0262194
