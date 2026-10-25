@@ -237,9 +237,8 @@ are shared for research use; please cite this repository if you use them.
 
 If you use this code, the results or the literature data, please cite:
 
-> Patel K. Data leakage in ICU prediction research on MIMIC-IV and eICU-CRD: controlled
-> experiments, a literature audit and a provenance-based audit tool. Code and data,
-> version 0.1.0. Zenodo. https://doi.org/ZENODO_DOI
+> Patel K. Nirmal N., Vora D., Beedala P., Mehta H. Data leakage in ICU prediction research on MIMIC-IV and eICU-CRD: controlled
+> experiments, a literature audit and a provenance-based audit tool. 
 
 Please also cite the databases:
 
