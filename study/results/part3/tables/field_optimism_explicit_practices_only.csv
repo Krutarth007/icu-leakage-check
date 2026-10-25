@@ -1,0 +1,7 @@
+quantity,estimate,lower_95,upper_95
+mean_optimism,0.0515602,0.0460646,0.05723
+median_optimism,0.0333769,0.0271976,0.0453944
+share_over_0.01,0.733959,0.694836,0.771518
+share_over_0.05,0.399061,0.336463,0.482003
+share_of_0.90_claims_remaining,0.505263,0.410526,0.6
+mean_adjusted_auroc,0.771464,0.765794,0.77696

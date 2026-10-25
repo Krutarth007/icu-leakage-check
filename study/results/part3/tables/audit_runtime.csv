@@ -1,0 +1,9 @@
+database,stays,mode,provenance_rows,seconds,fail,warn,pass
+mimic-iv,1000,full,158869,0.522496,0,0,16
+mimic-iv,5000,full,787843,1.25943,0,0,16
+mimic-iv,20000,full,3148937,2.63484,0,0,16
+mimic-iv,57460,table only,0,3.48328,0,0,10
+eicu,999,full,143331,0.464368,0,0,18
+eicu,5000,full,728890,0.668405,0,0,18
+eicu,20000,full,2905288,1.17309,0,0,18
+eicu,129258,table only,0,4.77745,0,0,12

@@ -1,0 +1,8 @@
+characteristic,full_text_mean,abstract_only_mean,standardised_difference
+publication year,2024.73,2024.75,-0.0114554
+reported AUROC,0.823024,0.829683,-0.0794613
+log sample size,7.93259,8.23654,-0.183537
+uses eICU-CRD,0.373266,0.376953,-0.00760942
+mortality outcome,0.575032,0.544922,0.0606363
+tree ensemble or deep learning,0.72005,0.568359,0.320635
+citations,6.57251,1.9043,0.459344

@@ -1,0 +1,18 @@
+term,estimate,ci_lower,ci_upper
+any_content_risk,-0.0691493,-0.220499,0.0869828
+any_procedural_risk,0.0537711,-0.084134,0.203284
+pub_year,-0.0414243,-0.0963163,0.00813521
+log_n,0.0271139,-0.0201492,0.0786126
+task_bleeding or thrombosis,0.0537077,-0.296318,0.421674
+task_circulatory,0.610846,-0.549406,2.3582
+task_delirium,-0.250722,-0.688125,0.271111
+task_los,-0.420249,-0.916388,0.305024
+task_mortality,-0.209839,-0.46798,0.0367584
+task_other,0.0833622,-0.808061,1.04594
+task_readmission,-0.983004,-1.28804,6.8287e-14
+task_respiratory,-0.471185,-0.796541,-0.144014
+task_sepsis,-0.240133,-0.533846,0.0369817
+model_family_other,-0.929693,-1.1506,4.0532e-13
+model_family_regression,-0.449212,-0.630419,-0.278345
+model_family_tree ensemble,-0.082979,-0.27099,0.102872
+const,85.6766,-14.4675,197.101

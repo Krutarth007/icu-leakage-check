@@ -1,0 +1,10 @@
+quantity,estimate,lower_95,upper_95
+mean_optimism,0.0620114,0.0557069,0.0686051
+median_optimism,0.0518715,0.0451298,0.0585116
+share_over_0.01,0.793427,0.757433,0.83259
+share_over_0.05,0.524257,0.431925,0.57903
+share_of_0.90_claims_remaining,0.421053,0.326316,0.505263
+mean_adjusted_auroc,0.761013,0.754419,0.767317
+mean reported AUROC,0.823024,,
+studies in the model,639,,
+studies reporting AUROC >= 0.90,95,,

@@ -1,0 +1,19 @@
+indicator,name,n,tp,fn,tn,fp,sensitivity,sens_lower,sens_upper,specificity,spec_lower,spec_upper,kappa
+I01,Split allows the same patient in training and test,100,1,7,62,30,0.125,0.0224169,0.470895,0.673913,0.572831,0.761054,-0.0869565
+I02,Features summarised over the whole stay,100,0,28,72,0,0,0,0.120647,1,0.949347,1,0
+I03,Result availability time not handled,100,100,0,0,0,1,0.963005,1,,,,
+I04,Running infusions or ventilation not truncated at the prediction time,61,22,0,0,39,1,0.85134,1,0,0,0.0896699,0
+I05,Length of stay or discharge information used as a predictor,99,5,6,78,10,0.454545,0.21271,0.719912,0.886364,0.803313,0.937093,0.294118
+I06,Outcome or outcome-derived fields used as predictors (eICU-CRD),33,0,0,32,1,,,,0.969697,0.846809,0.994631,0
+I07,Comorbidities from same-admission diagnosis codes,100,27,25,47,1,0.519231,0.386855,0.648961,0.979167,0.891005,0.996313,0.488994
+I08,Code status or care limitation used as a predictor,100,0,0,100,0,,,,1,0.963005,1,
+I09,First-day severity scores in an earlier prediction,51,0,2,47,2,0,0,0.657628,0.959184,0.862867,0.988735,-0.0408163
+I10,Patients with the outcome at the prediction time not excluded,38,15,0,2,21,1,0.796111,1,0.0869565,0.0241795,0.267964,0.0699301
+I11,Imputation or scaling fitted on all data,100,0,23,75,2,0,-1.38778e-17,0.143121,0.974026,0.910152,0.992848,-0.038206
+I12,Feature selection on all data,100,0,26,73,1,0,0,0.128733,0.986486,0.927345,0.997611,-0.0196375
+I13,Resampling before the split,100,0,6,94,0,0,0,0.390343,1,0.960737,1,0
+I14,Threshold chosen on the test set,100,4,8,85,3,0.333333,0.138118,0.609382,0.965909,0.904502,0.988339,0.364896
+I15,Hyperparameters or final model chosen on the test set,100,0,31,69,0,0,-1.38778e-17,0.110259,1,0.947261,1,0
+I16,Temporal validation on shifted MIMIC-IV dates,86,0,0,85,1,,,,0.988372,0.937034,0.997944,0
+I17,Overlapping data presented as external validation,51,4,4,41,2,0.5,0.215213,0.784787,0.953488,0.845442,0.987151,0.504854
+pooled,all 17 indicators,1419,178,166,962,113,0.517442,0.464735,0.569763,0.894884,0.875122,0.911833,0.435119

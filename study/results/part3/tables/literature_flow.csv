@@ -1,0 +1,17 @@
+step,n
+Records retrieved from Europe PMC,3957
+Duplicates removed by DOI,1
+Duplicates removed by PMID,0
+Duplicates removed by PMCID,0
+Duplicates removed by title,97
+Unique records,3859
+Excluded: No discrimination metric in the abstract,2006
+Excluded: MIMIC-IV or eICU-CRD not named in title or abstract,136
+"Excluded: Imaging, waveform or text modality",49
+Excluded: Not a prediction study,35
+Excluded: Review or non-research article,18
+Included after screening,1615
+  of which multivariable model studies,1305
+  of which preprints,305
+Included with full text,996
+Included with abstract only,619

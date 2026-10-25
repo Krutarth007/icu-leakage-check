@@ -1,0 +1,25 @@
+database,model,scenario,true_auroc,claimed_auroc,prevalence,alerts_planned_per_1000,alerts_needed_per_1000,extra_alerts_per_1000,sensitivity_at_planned_budget,missed_events_per_1000_vs_plan,ppv_planned,ppv_actual
+mimic-iv,logistic,field-level expected optimism,0.867617,0.929628,0.110407,183.69,293.836,110.146,0.663668,15.0521,0.480841,0.300596
+mimic-iv,logistic,E02 Look-ahead: features beyond the prediction time,0.867617,0.902198,0.110407,231.927,293.836,61.9088,0.733005,7.39674,0.380834,0.300596
+mimic-iv,logistic,E05 Discharge fields and length of stay,0.867617,0.995,0.110407,90.5907,293.836,203.245,0.454632,38.1311,0.974998,0.300596
+mimic-iv,logistic,E07 Same-admission billing codes and diagnoses,0.867617,0.939093,0.110407,167.568,293.836,126.268,0.635934,18.1141,0.527104,0.300596
+mimic-iv,logistic,"E08 Care limitation and code status, any time",0.867617,0.879594,0.110407,272.389,293.836,21.4464,0.779052,2.3128,0.324263,0.300596
+mimic-iv,logistic,E13b Resampling before the split (as reported),0.867617,0.879285,0.110407,272.945,293.836,20.8907,0.779622,2.24983,0.323603,0.300596
+mimic-iv,hgb,field-level expected optimism,0.885387,0.947398,0.110407,153.787,262.005,108.218,0.646443,16.9538,0.574338,0.337114
+mimic-iv,hgb,E02 Look-ahead: features beyond the prediction time,0.885387,0.91634,0.110407,206.852,262.005,55.1536,0.734417,7.24081,0.427,0.337114
+mimic-iv,hgb,E05 Discharge fields and length of stay,0.885387,0.995,0.110407,90.5907,262.005,171.415,0.486546,34.6075,0.974998,0.337114
+mimic-iv,hgb,E07 Same-admission billing codes and diagnoses,0.885387,0.946178,0.110407,155.787,262.005,106.218,0.650357,16.5216,0.566965,0.337114
+mimic-iv,hgb,"E08 Care limitation and code status, any time",0.885387,0.896114,0.110407,242.794,262.005,19.2115,0.779467,2.26699,0.363789,0.337114
+mimic-iv,hgb,E13b Resampling before the split (as reported),0.885387,0.991604,0.110407,93.2552,262.005,168.75,0.495088,33.6645,0.947141,0.337114
+eicu,logistic,field-level expected optimism,0.840278,0.902289,0.0915379,219.711,332.66,112.949,0.679754,11.0071,0.333302,0.220135
+eicu,logistic,E02 Look-ahead: features beyond the prediction time,0.840278,0.873185,0.0915379,272.926,332.66,59.7347,0.74353,5.16914,0.268316,0.220135
+eicu,logistic,E05 Discharge fields and length of stay,0.840278,0.995,0.0915379,75.5433,332.66,257.117,0.384512,38.0328,0.969382,0.220135
+eicu,logistic,E07 Same-admission billing codes and diagnoses,0.840278,0.841273,0.0915379,330.871,332.66,1.78902,0.798497,0.137605,0.221326,0.220135
+eicu,logistic,"E08 Care limitation and code status, any time",0.840278,0.885111,0.0915379,251.099,332.66,81.561,0.719161,7.39981,0.291639,0.220135
+eicu,logistic,E13b Resampling before the split (as reported),0.840278,0.847656,0.0915379,319.368,332.66,13.2923,0.788576,1.04576,0.229297,0.220135
+eicu,hgb,field-level expected optimism,0.864349,0.92636,0.0915379,176.385,289.062,112.677,0.661781,12.6523,0.415173,0.253338
+eicu,hgb,E02 Look-ahead: features beyond the prediction time,0.864349,0.891376,0.0915379,239.634,289.062,49.4275,0.74907,4.66203,0.305592,0.253338
+eicu,hgb,E05 Discharge fields and length of stay,0.864349,0.995,0.0915379,75.5433,289.062,213.519,0.424461,34.376,0.969382,0.253338
+eicu,hgb,E07 Same-admission billing codes and diagnoses,0.864349,0.877966,0.0915379,264.179,289.062,24.8829,0.775884,2.20753,0.277199,0.253338
+eicu,hgb,"E08 Care limitation and code status, any time",0.864349,0.899861,0.0915379,224.136,289.062,64.9255,0.730347,6.37585,0.326722,0.253338
+eicu,hgb,E13b Resampling before the split (as reported),0.864349,0.995,0.0915379,75.5433,289.062,213.519,0.424461,34.376,0.969382,0.253338

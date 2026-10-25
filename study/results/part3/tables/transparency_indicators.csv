@@ -1,0 +1,10 @@
+indicator,share_of_studies,n_studies
+code_shared,0.163934,793
+code_on_request,0.0163934,793
+calibration_reported,0.706179,793
+uncertainty_reported,0.82976,793
+reporting_guideline_cited,0.189155,793
+decision_curve_reported,0.61034,793
+leakage_discussed,0.197982,793
+external_validation_other_source,0.32913,793
+prediction_time_stated,0.810845,793
