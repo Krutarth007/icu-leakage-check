@@ -1,0 +1,213 @@
+{
+  "part": 1,
+  "environment": {
+    "run_started_utc": "2026-10-16T00:23:44Z",
+    "python": "3.11.5",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "processor": "Intel64 Family 6 Model 181 Stepping 0, GenuineIntel",
+    "icu_leakage_check": "0.1.0",
+    "pandas": "3.0.6",
+    "numpy": "2.4.6",
+    "scikit_learn": "1.9.1",
+    "duckdb": "1.5.6",
+    "matplotlib": "3.11.2"
+  },
+  "configuration": {
+    "ROOTS": {
+      "mimic-iv": "C:\\icu_parquet\\mimic",
+      "eicu": "C:\\icu_parquet\\eicu"
+    },
+    "MAX_STAYS": null,
+    "SEED": 20261015,
+    "INDEX_MIN": 1440,
+    "EARLY_INDEX_MIN": 360,
+    "LOOKAHEAD_MIN": 2880,
+    "OTHER_LOOKBACK_MIN": 1440,
+    "CREAT_LOOKBACK_MIN": 10080,
+    "AKI_HORIZON_MIN": 4320,
+    "LONG_STAY_MIN": 5760,
+    "PATIENT_TEST": 0.2,
+    "PATIENT_VALID": 0.1,
+    "SITE_TEST_FRACTION": 0.2,
+    "MIN_CELL": 10
+  },
+  "files": [
+    {
+      "file": "data/care_limitation_eicu.parquet",
+      "bytes": 1291833,
+      "sha256": "9b838c6d4692c88a0ff9c85f46ec1a110ec222d02bbdea43e72dc512d69a9f9f"
+    },
+    {
+      "file": "data/code_status_mimic-iv.parquet",
+      "bytes": 590839,
+      "sha256": "6493e3638b1a26887ed0774ef2ef6ba6f26ec99baaf62d972e4e188cf5c23acb"
+    },
+    {
+      "file": "data/cohort_eicu.parquet",
+      "bytes": 3597892,
+      "sha256": "6525706c79625d7f3cd66a886aeb2749f0bf2025cee2e0fa039f3655fafc836f"
+    },
+    {
+      "file": "data/cohort_mimic-iv.parquet",
+      "bytes": 2083907,
+      "sha256": "b2bc123d4c78cebb1a71f954a62743de752dc75872c358784d789fddf7cbaf2e"
+    },
+    {
+      "file": "data/events_eicu.parquet",
+      "bytes": 133588525,
+      "sha256": "2eaea4a2a8f5e7e80b7df6d26772e9138529ae57ed8d94598007ef74d7611907"
+    },
+    {
+      "file": "data/events_mimic-iv.parquet",
+      "bytes": 113454880,
+      "sha256": "00882d097be9d87db42e34cb1228d430ae150cc2b3a269f3f8ce41db509ec925"
+    },
+    {
+      "file": "data/features_clean_24h_eicu.parquet",
+      "bytes": 17362617,
+      "sha256": "124a479464bc9fbf28b7010923f5dc2cbe7f1108a5ec59e75c2512765e13b916"
+    },
+    {
+      "file": "data/features_clean_24h_mimic-iv.parquet",
+      "bytes": 7276541,
+      "sha256": "6092c8587eb03a65c632def18e74c13a4cb63263009024624847beae32aa7f3e"
+    },
+    {
+      "file": "data/hindsight_eicu.parquet",
+      "bytes": 4650611,
+      "sha256": "1858741b1bffc5f4e605dd563de49f69dd9e3b518c35e17ee010e7400bb1adf0"
+    },
+    {
+      "file": "data/hindsight_mimic-iv.parquet",
+      "bytes": 1513503,
+      "sha256": "02d2dcbc2d61169c0f61e625867e7e9cda7c1646237562b48901c5b5565a00b7"
+    },
+    {
+      "file": "data/hindsight_sources.json",
+      "bytes": 2162,
+      "sha256": "695a153f8dbea461e9da0a6ccdacef14d5757535f4b4bc1094affe124725a403"
+    },
+    {
+      "file": "data/provenance_clean_24h_eicu.parquet",
+      "bytes": 41748813,
+      "sha256": "3ec87cb660c6fba0346f0132fb7e6e436d43ca14ac2e851d3e0cbc2c77578004"
+    },
+    {
+      "file": "data/provenance_clean_24h_mimic-iv.parquet",
+      "bytes": 40589601,
+      "sha256": "183b3db4c66b1ec095b76a35c361e121e03b6b29426e85b90be298e93dc58339"
+    },
+    {
+      "file": "results/figures/fig_availability_lag.pdf",
+      "bytes": 20418,
+      "sha256": "df108df5deb300ec8048754037e32114e9cfbdba7b38ff000b517c343f81ce04"
+    },
+    {
+      "file": "results/figures/fig_availability_lag.png",
+      "bytes": 390647,
+      "sha256": "81db5e91f68f5a7c94b450a7a9fe20697391a2d2e995a200a93e2744407dd5ec"
+    },
+    {
+      "file": "results/figures/fig_outcome_proxies.pdf",
+      "bytes": 21494,
+      "sha256": "befceac7a8701692d82d584b67e1bbd706d5d8ad4e027cf77c94579410f649c3"
+    },
+    {
+      "file": "results/figures/fig_outcome_proxies.png",
+      "bytes": 144159,
+      "sha256": "bfd29fcb11d2687f22096d0f7437d9a56a9dea5a21200a3b12de7cef4ec203fb"
+    },
+    {
+      "file": "results/figures/fig_outcome_timing.pdf",
+      "bytes": 18883,
+      "sha256": "214fc25c601a4da805b44f1c3a59c73363cddc7521a3c537e503ded777050991"
+    },
+    {
+      "file": "results/figures/fig_outcome_timing.png",
+      "bytes": 96042,
+      "sha256": "20f9e7c9170abdf9ec732ddb781cf18c28b4dd0a744a621d5581a9d5b782882e"
+    },
+    {
+      "file": "results/tables/audit_clean_baseline.csv",
+      "bytes": 7547,
+      "sha256": "d4ff6f5c26c6431405791c00ebe7ae6e8a616335f7c7f2d23c41b5da1d9b0610"
+    },
+    {
+      "file": "results/tables/cohort_flow.csv",
+      "bytes": 673,
+      "sha256": "d64db3aa03aacd968ffa993601f1137934bad4fd1aeb0dadc4e7f109b5b37f16"
+    },
+    {
+      "file": "results/tables/mimic_item_definitions.csv",
+      "bytes": 2155,
+      "sha256": "7d73a9b9fef4265f03ee8cfc369e46496deff28ece0bc3cd31f7fd9d9931e57b"
+    },
+    {
+      "file": "results/tables/risk_availability_at_prediction.csv",
+      "bytes": 3528,
+      "sha256": "72eb894f60cd499b0a3180790bfe77b23474538fb6bf7dad7f2dccf05ad1e03e"
+    },
+    {
+      "file": "results/tables/risk_availability_lag.csv",
+      "bytes": 3813,
+      "sha256": "9dda6f2a4925c3cad7d762ae632e7bac256100edd71f4dfd3d0b389238e1bb0e"
+    },
+    {
+      "file": "results/tables/risk_hindsight_columns.csv",
+      "bytes": 2753,
+      "sha256": "a60b9b75bd29052e99a1f8e583dfefa3dde0eee1d647324763e212d9b56c0614"
+    },
+    {
+      "file": "results/tables/risk_outcome_proxies.csv",
+      "bytes": 1167,
+      "sha256": "d2d939e51925d8c3662bf30b9f4c4b4549edc9f4839e325fe6789928bcf716f0"
+    },
+    {
+      "file": "results/tables/risk_outcome_timing.csv",
+      "bytes": 349,
+      "sha256": "063299d20eda6485187bbe37ff772ed559b35c67385acbe768798f5d3f2be489"
+    },
+    {
+      "file": "results/tables/risk_repeat_stays.csv",
+      "bytes": 477,
+      "sha256": "8890fd26350880c4b969b5765c99710b19124b56575f3dfb1f777551da58910c"
+    },
+    {
+      "file": "results/tables/risk_table_timing_classes.csv",
+      "bytes": 200,
+      "sha256": "ce519cf24b1fafd6bc8814c668584d489e7267fcb44198c07041ef609f6910b6"
+    },
+    {
+      "file": "results/tables/splits_summary.csv",
+      "bytes": 682,
+      "sha256": "cd8ac993d61b98cdad585cc675d34ca92cdb016b86979afc8fd51b1070b0d636"
+    },
+    {
+      "file": "results/tables/table1_characteristics.csv",
+      "bytes": 669,
+      "sha256": "ad46ab330ca09fe37faa7da36abccd9cd2811e398f62a16ab9a6f9dce45fd461"
+    },
+    {
+      "file": "private_reports/audit_clean_baseline_eicu.html",
+      "bytes": 17936,
+      "sha256": "1713beea0da035fbc819ee04171c88692e869a0db72d1873c4fecc31e716f948"
+    },
+    {
+      "file": "private_reports/audit_clean_baseline_eicu.json",
+      "bytes": 18186,
+      "sha256": "c1a5bed089603c9c1eb33a24406ffa70070865486d1f9d82dd158074548e071b"
+    },
+    {
+      "file": "private_reports/audit_clean_baseline_mimic-iv.html",
+      "bytes": 16716,
+      "sha256": "02e7a38cb1d1b73ba58b24df21a7ed71ee5d2d276bd3db25120976e634970fcb"
+    },
+    {
+      "file": "private_reports/audit_clean_baseline_mimic-iv.json",
+      "bytes": 17363,
+      "sha256": "33846c48388cfad0a031e2c1142a5299442c6a0191d5555d980609986a0f8269"
+    }
+  ],
+  "chain_sha256": "a84f339e2d0379e400b33d1c27efee99ba73e26c243596bd2052467c88d11eeb",
+  "runtime_minutes": 8.8
+}

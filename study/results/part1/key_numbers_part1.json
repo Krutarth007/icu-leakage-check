@@ -1,0 +1,28 @@
+{
+  "MIMIC-IV": {
+    "ICU stays": 57460,
+    "patients": 42067,
+    "in-hospital mortality": 0.1104,
+    "prolonged ICU stay": 0.2872,
+    "AKI (eligible stays)": 0.1397,
+    "share of stays from patients with repeat stays": 0.4258,
+    "random row split, test stays linked to a training patient": 0.3538,
+    "values charted in first 24 h but available after it": 297378,
+    "share of first-24 h values arriving late": 0.0273,
+    "baseline audit failures": 0,
+    "baseline audit warnings": 0
+  },
+  "eICU-CRD": {
+    "ICU stays": 129258,
+    "patients": 102154,
+    "in-hospital mortality": 0.0915,
+    "prolonged ICU stay": 0.2559,
+    "AKI (eligible stays)": 0.0941,
+    "share of stays from patients with repeat stays": 0.3548,
+    "random row split, test stays linked to a training patient": 0.2833,
+    "values charted in first 24 h but available after it": 84818,
+    "share of first-24 h values arriving late": 0.0212,
+    "baseline audit failures": 0,
+    "baseline audit warnings": 0
+  }
+}
