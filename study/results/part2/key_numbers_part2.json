@@ -1,0 +1,90 @@
+{
+  "MIMIC-IV | In-hospital mortality": {
+    "clean AUROC by model": {
+      "logistic": 0.8676,
+      "hgb": 0.8854
+    },
+    "largest AUROC inflations": [
+      "E05 logistic: +0.130 (+0.120 to +0.141), paired",
+      "E05 hgb: +0.113 (+0.103 to +0.122), paired",
+      "E13b hgb: +0.106 (+0.097 to +0.116), as reported",
+      "E07 logistic: +0.071 (+0.062 to +0.081), paired",
+      "E07 hgb: +0.061 (+0.053 to +0.069), paired"
+    ],
+    "paired comparisons with AUROC inflation (lower 95% bound above zero)": 14
+  },
+  "MIMIC-IV | Prolonged ICU stay (> 4 days)": {
+    "clean AUROC by model": {
+      "logistic": 0.7721,
+      "hgb": 0.7977
+    },
+    "largest AUROC inflations": [
+      "E05 logistic: +0.228 (+0.218 to +0.239), paired",
+      "E05 hgb: +0.202 (+0.193 to +0.212), paired",
+      "E13b hgb: +0.125 (+0.114 to +0.135), as reported",
+      "E02 hgb: +0.076 (+0.068 to +0.084), paired",
+      "E02 logistic: +0.068 (+0.060 to +0.076), paired"
+    ],
+    "paired comparisons with AUROC inflation (lower 95% bound above zero)": 10
+  },
+  "MIMIC-IV | AKI 24 to 72 h": {
+    "clean AUROC by model": {
+      "logistic": 0.7585,
+      "hgb": 0.7751
+    },
+    "largest AUROC inflations": [
+      "E13b hgb: +0.194 (+0.180 to +0.211), as reported",
+      "E02 logistic: +0.158 (+0.145 to +0.172), paired",
+      "E02 hgb: +0.154 (+0.142 to +0.166), paired",
+      "E10b hgb: +0.070 (+0.054 to +0.089), as reported",
+      "E10b logistic: +0.063 (+0.044 to +0.083), as reported"
+    ],
+    "paired comparisons with AUROC inflation (lower 95% bound above zero)": 8
+  },
+  "eICU-CRD | In-hospital mortality": {
+    "clean AUROC by model": {
+      "logistic": 0.8403,
+      "hgb": 0.8643
+    },
+    "largest AUROC inflations": [
+      "E05 logistic: +0.160 (+0.151 to +0.168), paired",
+      "E06 logistic: +0.159 (+0.150 to +0.167), paired",
+      "E05 hgb: +0.136 (+0.128 to +0.143), paired",
+      "E06 hgb: +0.135 (+0.127 to +0.142), paired",
+      "E13b hgb: +0.135 (+0.126 to +0.141), as reported"
+    ],
+    "paired comparisons with AUROC inflation (lower 95% bound above zero)": 16
+  },
+  "eICU-CRD | Prolonged ICU stay (> 4 days)": {
+    "clean AUROC by model": {
+      "logistic": 0.7363,
+      "hgb": 0.7648
+    },
+    "largest AUROC inflations": [
+      "E05 logistic: +0.264 (+0.257 to +0.271), paired",
+      "E05 hgb: +0.235 (+0.229 to +0.242), paired",
+      "E13b hgb: +0.162 (+0.154 to +0.169), as reported",
+      "E07 hgb: +0.054 (+0.050 to +0.059), paired",
+      "E02 hgb: +0.051 (+0.047 to +0.056), paired"
+    ],
+    "paired comparisons with AUROC inflation (lower 95% bound above zero)": 17
+  },
+  "eICU-CRD | AKI 24 to 72 h": {
+    "clean AUROC by model": {
+      "logistic": 0.7355,
+      "hgb": 0.7591
+    },
+    "largest AUROC inflations": [
+      "E13b hgb: +0.230 (+0.218 to +0.242), as reported",
+      "E02 logistic: +0.167 (+0.156 to +0.178), paired",
+      "E02 hgb: +0.161 (+0.150 to +0.171), paired",
+      "E10b logistic: +0.078 (+0.064 to +0.093), as reported",
+      "E10b hgb: +0.075 (+0.061 to +0.088), as reported"
+    ],
+    "paired comparisons with AUROC inflation (lower 95% bound above zero)": 16
+  },
+  "detection eICU-CRD full": "16 of 16 mechanisms",
+  "detection eICU-CRD table": "7 of 16 mechanisms",
+  "detection MIMIC-IV full": "14 of 14 mechanisms",
+  "detection MIMIC-IV table": "6 of 14 mechanisms"
+}

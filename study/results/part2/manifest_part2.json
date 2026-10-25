@@ -1,0 +1,422 @@
+{
+  "part": 2,
+  "previous_chain_sha256": "a84f339e2d0379e400b33d1c27efee99ba73e26c243596bd2052467c88d11eeb",
+  "environment": {
+    "run_started_utc": "2026-10-16T01:12:39Z",
+    "python": "3.11.5",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "icu_leakage_check": "0.1.0",
+    "pandas": "3.0.6",
+    "numpy": "2.4.6",
+    "scikit_learn": "1.9.1",
+    "matplotlib": "3.11.2"
+  },
+  "configuration": {
+    "MAX_STAYS": null,
+    "DATABASES": [
+      "mimic-iv",
+      "eicu"
+    ],
+    "TASKS": [
+      "mortality",
+      "long_stay",
+      "aki"
+    ],
+    "MODELS": [
+      "logistic",
+      "hgb"
+    ],
+    "N_BOOT": 500,
+    "AUDIT_SAMPLE_STAYS": 20000,
+    "TOP_K_FEATURES": 30,
+    "SMOTE_K": 5,
+    "SEED": 20261015,
+    "INDEX_MIN": 1440,
+    "EARLY_INDEX_MIN": 360,
+    "part1_chain_sha256": "a84f339e2d0379e400b33d1c27efee99ba73e26c243596bd2052467c88d11eeb"
+  },
+  "files": [
+    {
+      "file": "results/figures/fig_detection_matrix.pdf",
+      "bytes": 27147,
+      "sha256": "5e32d99e89ffe194a360ccdf4e7bbb4e5aee7bf4fcaaf635a9fa58e3541a50cf"
+    },
+    {
+      "file": "results/figures/fig_detection_matrix.png",
+      "bytes": 404302,
+      "sha256": "cc7863528d8ed944075fdbf68d81f0ae5efdca950e9b232b69f4ac511aae17aa"
+    },
+    {
+      "file": "results/figures/fig_inflation_heatmap.pdf",
+      "bytes": 33594,
+      "sha256": "64ea68d0d0b7f291d6810a66e3faa4213d3ee1cb15f45fc129121b94261b9a9a"
+    },
+    {
+      "file": "results/figures/fig_inflation_heatmap.png",
+      "bytes": 447024,
+      "sha256": "ba7a3e5a9d0923a2a223c6d8cc654d9f2fab3be67d990f40fb1de336e6428515"
+    },
+    {
+      "file": "results/figures/fig_inflation_mortality_auroc.pdf",
+      "bytes": 30111,
+      "sha256": "260957f7e1d8d22b49fda6c15a9772ee5245aee64ac1678a6533866c9e24147b"
+    },
+    {
+      "file": "results/figures/fig_inflation_mortality_auroc.png",
+      "bytes": 328893,
+      "sha256": "d26972f6c35f1aac911f8e5e757270e8c38fd7d54b4744e5349d3dfd98078087"
+    },
+    {
+      "file": "results/figures/fig_inflation_mortality_calibration_slope.pdf",
+      "bytes": 29671,
+      "sha256": "187473579c1d1064e907212f3b382177194df62ddfe1905b2facd7eb1ba05bca"
+    },
+    {
+      "file": "results/figures/fig_inflation_mortality_calibration_slope.png",
+      "bytes": 327264,
+      "sha256": "e54bdc1e6b9b31f54b867bacfd4dec16f4f4900d79de3142492cfa4f7c2fe463"
+    },
+    {
+      "file": "results/key_numbers_part2.json",
+      "bytes": 3457,
+      "sha256": "c3d0da2dbec9ba52792012a179b063e787ee10c7da1dcb9a2f4a06f32102421a"
+    },
+    {
+      "file": "results/raw/inflation_eicu_aki_hgb.parquet",
+      "bytes": 14968,
+      "sha256": "fda490e4b22a54326fb9a898f7c1f9a62d4f5f151d20fca181f6c242cdd6120f"
+    },
+    {
+      "file": "results/raw/inflation_eicu_aki_logistic.parquet",
+      "bytes": 15265,
+      "sha256": "d95890ae6a5615b15c47c27332079d180568ede67f024d47cacbcc242eb698ce"
+    },
+    {
+      "file": "results/raw/inflation_eicu_long_stay_hgb.parquet",
+      "bytes": 14432,
+      "sha256": "8ed5684d6ab1e7aaaddc826be4d97acc337531564f1c84070696cf9240cc6fb4"
+    },
+    {
+      "file": "results/raw/inflation_eicu_long_stay_logistic.parquet",
+      "bytes": 14794,
+      "sha256": "b78b04ee8832b43e6b641f89b786f626ceceea700baba8e4b4f56e7022e6a3dd"
+    },
+    {
+      "file": "results/raw/inflation_eicu_mortality_hgb.parquet",
+      "bytes": 14409,
+      "sha256": "db9466a4d815dcc7f09dfdba09fb15b5fb784241a9da733c57e03911226a6975"
+    },
+    {
+      "file": "results/raw/inflation_eicu_mortality_logistic.parquet",
+      "bytes": 14725,
+      "sha256": "1be8a0947dd0f8031b2cf20b9ec278ee07f93edffcbbd43eb27757bfc61a0a6b"
+    },
+    {
+      "file": "results/raw/inflation_mimic-iv_aki_hgb.parquet",
+      "bytes": 14473,
+      "sha256": "ca1421b1a17144855546c1c75265d85c189e9ece50caf0a2408ca26254b70273"
+    },
+    {
+      "file": "results/raw/inflation_mimic-iv_aki_logistic.parquet",
+      "bytes": 15107,
+      "sha256": "63fb4323713dba875db1fc4b9e7e77c3cbfd0adad3df2f83f739e296ac3baeca"
+    },
+    {
+      "file": "results/raw/inflation_mimic-iv_long_stay_hgb.parquet",
+      "bytes": 14213,
+      "sha256": "32f995498ac1deff52e45022dd8a1a827acfb3d5aafd5f22805c9fd867cbcc96"
+    },
+    {
+      "file": "results/raw/inflation_mimic-iv_long_stay_logistic.parquet",
+      "bytes": 14505,
+      "sha256": "e3cdef8cb5605ac00aa610f71158c416c6f15d13a6e5bd881c87c6a073558a30"
+    },
+    {
+      "file": "results/raw/inflation_mimic-iv_mortality_hgb.parquet",
+      "bytes": 14176,
+      "sha256": "02564b0d7638bf3cd080f4f030dbab36446ff13f510e142f339c5987d6bac42a"
+    },
+    {
+      "file": "results/raw/inflation_mimic-iv_mortality_logistic.parquet",
+      "bytes": 14609,
+      "sha256": "ec21e2f402ae3a92fb411a767fa629b4428ca0e75585507bc1c8a7e66926012a"
+    },
+    {
+      "file": "results/raw/threshold_eicu_aki_hgb.parquet",
+      "bytes": 10239,
+      "sha256": "1b8836a521800bf2e7a3e79b51223d71a135b8acce567e1e06ea12512d7997a0"
+    },
+    {
+      "file": "results/raw/threshold_eicu_aki_logistic.parquet",
+      "bytes": 10265,
+      "sha256": "d12a8629db1e1ac1e47345f16d824da027cdd7f49ae547f977f0a5d29020362d"
+    },
+    {
+      "file": "results/raw/threshold_eicu_long_stay_hgb.parquet",
+      "bytes": 10270,
+      "sha256": "9a99a0b16dfb8e4c9146bc48b41cceb742b1fd31d5598ee6639af737c5d8209b"
+    },
+    {
+      "file": "results/raw/threshold_eicu_long_stay_logistic.parquet",
+      "bytes": 10296,
+      "sha256": "8fa960026da4e1f275645d9d5689a19effb39af6243eef569e382f75964221d3"
+    },
+    {
+      "file": "results/raw/threshold_eicu_mortality_hgb.parquet",
+      "bytes": 10270,
+      "sha256": "adf6bc0974cf8d620787016fe29f5a1b630c6aaa215f0b9034ab1b37c110f296"
+    },
+    {
+      "file": "results/raw/threshold_eicu_mortality_logistic.parquet",
+      "bytes": 10296,
+      "sha256": "a2d5daf9a4ae6cd27c5b749324d18c6c451bedf45736a4e5da9c4a01f05f19f5"
+    },
+    {
+      "file": "results/raw/threshold_mimic-iv_aki_hgb.parquet",
+      "bytes": 10259,
+      "sha256": "e9fe8b3710c66101713872d68d55660d5c6299a1b9c0b74e0a501d31f6d97b81"
+    },
+    {
+      "file": "results/raw/threshold_mimic-iv_aki_logistic.parquet",
+      "bytes": 10285,
+      "sha256": "381fd3d48609f72ced02c42d83867c38e426b6244bc18befcbf6d86287348ce5"
+    },
+    {
+      "file": "results/raw/threshold_mimic-iv_long_stay_hgb.parquet",
+      "bytes": 10290,
+      "sha256": "a2d3d0bfa6625cfb638e2d1a18c38a19c7e7857a32a7a5c98d539620d3363caf"
+    },
+    {
+      "file": "results/raw/threshold_mimic-iv_long_stay_logistic.parquet",
+      "bytes": 10316,
+      "sha256": "6bc8707bada858a8cc90715f9792186caea369f2172f9f72208e7fbe2222e39b"
+    },
+    {
+      "file": "results/raw/threshold_mimic-iv_mortality_hgb.parquet",
+      "bytes": 10290,
+      "sha256": "33b517db3cd7f3317fb1841c90423bff43c86f5c17760a29bd9efdf25e76930a"
+    },
+    {
+      "file": "results/raw/threshold_mimic-iv_mortality_logistic.parquet",
+      "bytes": 10316,
+      "sha256": "0ff54551c91f51cf0999933c60f1812cf634709de828309e948709d86bcbabf2"
+    },
+    {
+      "file": "results/tables/detection_matrix.csv",
+      "bytes": 8191,
+      "sha256": "c4ca06e65e75e4c26cb40a5865f4a48d51f6b50ee4c2f099269ce36f746174f0"
+    },
+    {
+      "file": "results/tables/detection_summary.csv",
+      "bytes": 161,
+      "sha256": "c856c15f7e9a4ad968075182f53a0bcbebeed28e55c4f45c0a3256c50dcfb888"
+    },
+    {
+      "file": "results/tables/inflation_all.csv",
+      "bytes": 169954,
+      "sha256": "42e06d5c104e2f263e935b018d362190a79727732e18363f7d498e4a7604a8a7"
+    },
+    {
+      "file": "results/tables/late_arrivals_by_value_type.csv",
+      "bytes": 233,
+      "sha256": "8d579b9982f3c89ee5574d3d3ca88d1b53e5c3571090983ac5f167b1e83e419d"
+    },
+    {
+      "file": "results/tables/risk_availability_lag_corrected.csv",
+      "bytes": 4289,
+      "sha256": "cc32a3a8f2728c5652e98df6d069e20b4402541ab604c277d86cc0f28fadb3b8"
+    },
+    {
+      "file": "results/tables/table_inflation_aki.csv",
+      "bytes": 12875,
+      "sha256": "c390ea209465cb0f473ce60bd84871568fd1341aa3b2ddadf0f227af2b2448d2"
+    },
+    {
+      "file": "results/tables/table_inflation_long_stay.csv",
+      "bytes": 11317,
+      "sha256": "1f4e32191ea62af2bb8712f36542279dda786d26aacea3ff02dc719b2b310503"
+    },
+    {
+      "file": "results/tables/table_inflation_mortality.csv",
+      "bytes": 11307,
+      "sha256": "9fee0a5b3d9ebcc14156f76a068f0ca08e2ec6cff02d7365e33d56110f741394"
+    },
+    {
+      "file": "results/tables/threshold_effects.csv",
+      "bytes": 8547,
+      "sha256": "2357294d27c983c43031e3c71a916e10239eb7f1ffc78a5199817f0eb3b7ca05"
+    },
+    {
+      "file": "private_reports/detection_eicu_E00.html",
+      "bytes": 18040,
+      "sha256": "997f18cea0119b15c4921426a3f55b6b1528f707f36f4ecf23e5170c1da07ede"
+    },
+    {
+      "file": "private_reports/detection_eicu_E01b.html",
+      "bytes": 24934,
+      "sha256": "fefd175a22d203e9ccc1fc94fc0701307f77bd1a077168b69d47afda4e6cf8b1"
+    },
+    {
+      "file": "private_reports/detection_eicu_E02.html",
+      "bytes": 22208,
+      "sha256": "78ec467c2a84db56dd9a2b2a2b4655641a6d62eb3a5ab86c50941f2530b6dcc0"
+    },
+    {
+      "file": "private_reports/detection_eicu_E03.html",
+      "bytes": 19142,
+      "sha256": "fbf4370e057644c3cd5a9cccb6ad0e3f37bde466905ca2b96065af5e815df67f"
+    },
+    {
+      "file": "private_reports/detection_eicu_E05.html",
+      "bytes": 21545,
+      "sha256": "fce96355b2ac319e4aea1b12012c345cc870d531797daf0d056f6d505367f8c4"
+    },
+    {
+      "file": "private_reports/detection_eicu_E06.html",
+      "bytes": 18655,
+      "sha256": "d8ac817e9c64656552c74b89a1f862b31a1dcad8ee4b403afc778643504d381c"
+    },
+    {
+      "file": "private_reports/detection_eicu_E07.html",
+      "bytes": 18275,
+      "sha256": "a1c3e086a62d300ee56f2dec85bf53cdd2ef08c40aae3ea859b170db10de477b"
+    },
+    {
+      "file": "private_reports/detection_eicu_E08.html",
+      "bytes": 18661,
+      "sha256": "10fb0e5f5e4cfa49105c37e3cbbdae90ccecb97387250fa2fae29267828b5028"
+    },
+    {
+      "file": "private_reports/detection_eicu_E08b.html",
+      "bytes": 18770,
+      "sha256": "0418b7b371f4b50255165f26ec023821c05103c1e7c62275a0de3a653bf0c1d0"
+    },
+    {
+      "file": "private_reports/detection_eicu_E09.html",
+      "bytes": 19606,
+      "sha256": "a9ff0e5dd515117797f52f59826779d75e9cfcd29146b0c388ca9c9ec7fbc4fd"
+    },
+    {
+      "file": "private_reports/detection_eicu_E09b.html",
+      "bytes": 18036,
+      "sha256": "557250c00ec9d41e26f087f6bd1012fcefa8f635138ed29cfcc3a7dfa5c4840f"
+    },
+    {
+      "file": "private_reports/detection_eicu_E10.html",
+      "bytes": 19681,
+      "sha256": "bcd0ff90bc6070b808e87542534c0158c1c99af5eaf217e9b1aecd75752e940c"
+    },
+    {
+      "file": "private_reports/detection_eicu_E11.html",
+      "bytes": 19373,
+      "sha256": "39f126fa6da7c5813814839aae4cb22a90d8a16711b7f8d4c649940afadd2f1a"
+    },
+    {
+      "file": "private_reports/detection_eicu_E12.html",
+      "bytes": 18526,
+      "sha256": "7fee1d3b64a0f784778c47d8d44ab1c83851e46a62bb537ef6b992c01afed416"
+    },
+    {
+      "file": "private_reports/detection_eicu_E13b.html",
+      "bytes": 16032,
+      "sha256": "10e7b779af99ef80130dc809c51e93a90c51bcd164ecda1722e13508a17e957d"
+    },
+    {
+      "file": "private_reports/detection_eicu_E14.html",
+      "bytes": 18745,
+      "sha256": "58a541bbad96210109c1459159fac975bbd561aa94179f26731ded40200394c4"
+    },
+    {
+      "file": "private_reports/detection_eicu_E15.html",
+      "bytes": 18526,
+      "sha256": "4f39cdbc0464c17fbccd809d87845e40fc8cbbfb504e2e437cd70b1bfd1df4a3"
+    },
+    {
+      "file": "private_reports/detection_eicu_E17.html",
+      "bytes": 18347,
+      "sha256": "92f27123720a893ffb6cae1df8e055666ea97521cc9c0d09c2d011cb5e59fb98"
+    },
+    {
+      "file": "private_reports/detection_mimic-iv_E00.html",
+      "bytes": 16696,
+      "sha256": "b374e3237b355679146baa775b1399647ed4aaa2739296395f491bc066203e39"
+    },
+    {
+      "file": "private_reports/detection_mimic-iv_E01b.html",
+      "bytes": 23612,
+      "sha256": "c32aa2dfe4d552141d249466526781c9df8ac35f605569a1f20aa71e1415845b"
+    },
+    {
+      "file": "private_reports/detection_mimic-iv_E02.html",
+      "bytes": 22290,
+      "sha256": "8ab066410ffa4b11bf6b7dd1664c2cc89433b27a6eca0b45a283e049dbe223a4"
+    },
+    {
+      "file": "private_reports/detection_mimic-iv_E03.html",
+      "bytes": 18045,
+      "sha256": "70baf73a990f1d6b325b485056d864963e2e89097e6f3b1ef8feb843e7584e43"
+    },
+    {
+      "file": "private_reports/detection_mimic-iv_E04.html",
+      "bytes": 17712,
+      "sha256": "0d746e5b66d7a3b3d6fc1f6ad6149ed78b0c2e5a5c6ebd67a286df24c5134d63"
+    },
+    {
+      "file": "private_reports/detection_mimic-iv_E05.html",
+      "bytes": 19069,
+      "sha256": "ec11b21890eb9f21438852ae6f67ed345b24f9722b5c10714062566df5c5b92a"
+    },
+    {
+      "file": "private_reports/detection_mimic-iv_E07.html",
+      "bytes": 18527,
+      "sha256": "f3ff05089776c949564e220269778ee7ae97d7a15911f617c2696618100219ad"
+    },
+    {
+      "file": "private_reports/detection_mimic-iv_E08.html",
+      "bytes": 17072,
+      "sha256": "c8089525fc653f58b21eef4b898a4a4df60aab9049c1e60c90f6f3bf0918a3d6"
+    },
+    {
+      "file": "private_reports/detection_mimic-iv_E08b.html",
+      "bytes": 17114,
+      "sha256": "3d94578ee1776f980c1d868a96c380e5e873e3e40e7f43c772a8d67878b1354a"
+    },
+    {
+      "file": "private_reports/detection_mimic-iv_E10.html",
+      "bytes": 17897,
+      "sha256": "c477f1193ac193f7d32d70a7be273dc9c8bc689a8a958831013aedbb794eb417"
+    },
+    {
+      "file": "private_reports/detection_mimic-iv_E11.html",
+      "bytes": 18029,
+      "sha256": "19a86abc771279f7c1d1048b4df97dec1613b255dbdb0c0f714c17ba54a563d8"
+    },
+    {
+      "file": "private_reports/detection_mimic-iv_E12.html",
+      "bytes": 17182,
+      "sha256": "5c94a3e26ffae4263e6f68cb06769f88a4c8fbe4f9951555d06f528518cf2848"
+    },
+    {
+      "file": "private_reports/detection_mimic-iv_E13b.html",
+      "bytes": 14713,
+      "sha256": "c7dec31213ea915789c6a16c4e2ed68f1ed7c57d7bac10ccab81be2dd41ad077"
+    },
+    {
+      "file": "private_reports/detection_mimic-iv_E14.html",
+      "bytes": 17400,
+      "sha256": "9f38c85353a54711b89c04cfb50693c2742b0e16b802c9fbcc53a9269dec01f9"
+    },
+    {
+      "file": "private_reports/detection_mimic-iv_E15.html",
+      "bytes": 17182,
+      "sha256": "dd4ca8112cbf1768d1704d6c72d40e711432893d6f75afe33cd23bf2af71b08a"
+    },
+    {
+      "file": "private_reports/detection_mimic-iv_E16.html",
+      "bytes": 18585,
+      "sha256": "69899809c50e36a1330f8c3e7c389440a1aba6bedd552b7be3020af0204e5f10"
+    }
+  ],
+  "chain_sha256": "36cffffe5a1ec6d4cb8e81e8858a1795b5a7a94db7295db937fb50051937667f",
+  "runtime_minutes": 121.3
+}
