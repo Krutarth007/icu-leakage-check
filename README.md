@@ -58,7 +58,6 @@ prediction only) are reference or sensitivity versions of the mechanism with the
 ## Folder structure
 
 ```
-study/
 ├── README.md
 ├── notebooks/
 │   ├── Part1_cohorts_events_risk_surface.ipynb
