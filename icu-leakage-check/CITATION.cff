@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it using these metadata."
+title: "icu-leakage-check: detecting data leakage in clinical prediction pipelines"
+type: software
+authors:
+  - family-names: Patel
+    given-names: Krutarth
+version: 0.1.0
+date-released: 2026-10-15
+license: MIT
+repository-code: "https://github.com/Krutarth007/icu-leakage-check"
+keywords:
+  - data leakage
+  - clinical prediction
+  - electronic health records
+  - MIMIC-IV
+  - eICU
+  - model validation

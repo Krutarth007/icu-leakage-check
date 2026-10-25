@@ -1,0 +1,24 @@
+{
+  "data": "features.parquet",
+  "label": "died",
+  "split": "split",
+  "dataset": "eicu",
+  "index_time": "index_offset",
+  "outcome_time": "death_offset",
+  "calendar_time": "hospitaldischargeyear",
+  "split_strategy": "patient",
+  "feature_sources": {
+    "apachescore": "apachePatientResult.apachescore",
+    "lab_*": "lab"
+  },
+  "declarations": {
+    "feature_selection_on_training_only": true,
+    "hyperparameters_tuned_without_test": true,
+    "threshold_chosen_without_test": true,
+    "test_set_used_once": true
+  },
+  "exclude_columns": ["score"],
+  "html": "leakage_report.html",
+  "json": "leakage_report.json",
+  "fail_on": "high"
+}

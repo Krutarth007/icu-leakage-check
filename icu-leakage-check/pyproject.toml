@@ -1,0 +1,59 @@
+[build-system]
+requires = ["setuptools>=77", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "icu-leakage-check"
+version = "0.1.0"
+description = "Detect, explain and quantify data leakage in clinical prediction pipelines built on electronic health records, with schema-aware support for MIMIC-IV and eICU-CRD."
+readme = "README.md"
+requires-python = ">=3.9"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Krutarth Patel" }]
+keywords = [
+    "data leakage",
+    "clinical prediction",
+    "electronic health records",
+    "MIMIC-IV",
+    "eICU",
+    "machine learning validation",
+    "model governance",
+    "reproducibility",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Healthcare Industry",
+    "Intended Audience :: Science/Research",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Topic :: Scientific/Engineering :: Medical Science Apps.",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+    "numpy>=1.22",
+    "pandas>=1.4",
+    "scikit-learn>=1.1",
+]
+
+[project.optional-dependencies]
+fast = ["duckdb>=0.9", "pyarrow>=12"]
+dev = ["pytest>=7", "duckdb>=0.9", "pyarrow>=12", "imbalanced-learn>=0.11", "build", "twine"]
+
+[project.scripts]
+icu-leakage-check = "icu_leakage_check.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/Krutarth007/icu-leakage-check"
+Issues = "https://github.com/Krutarth007/icu-leakage-check/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+icu_leakage_check = ["py.typed"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

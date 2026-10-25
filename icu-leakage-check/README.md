@@ -1,0 +1,288 @@
+# icu-leakage-check
+
+**Find out whether your clinical prediction model is predicting, or peeking.**
+
+`icu-leakage-check` audits clinical machine learning pipelines for data leakage: information
+that would not be available at the moment a prediction is made, or that links the evaluation
+data back to the training data. It runs 16 checks covering 19 leakage mechanisms, explains
+every finding in plain language, points to the affected features, and measures how much a
+leak inflates reported performance.
+
+It works on any tabular EHR dataset and has built-in timing knowledge of every table in
+**MIMIC-IV** (hosp and icu) and the **eICU Collaborative Research Database**.
+
+[![tests](https://github.com/Krutarth007/icu-leakage-check/actions/workflows/tests.yml/badge.svg)](https://github.com/Krutarth007/icu-leakage-check/actions/workflows/tests.yml)
+![python](https://img.shields.io/badge/python-3.9%2B-blue)
+![license](https://img.shields.io/badge/license-MIT-green)
+
+Try it in ten seconds, with simulated ICU data and no credentials:
+
+```bash
+pip install icu-leakage-check
+icu-leakage-check demo --html demo_report.html
+```
+
+```text
+Verdict: Leakage detected
+Checks: 7 fail, 0 warn, 9 pass, 4 skipped
+
+[FAIL] CRITICAL event_timing: 42,641 events recorded after the prediction time (42.7% of events, 2,352 prediction units), feeding 20 features.
+           affected: lactate__last, lactate__max, lactate__mean, lactate__sum, potassium__last, ... (+12 more)
+           fix: Restrict every feature to events at or before the prediction time.
+[FAIL] CRITICAL preprocessing_fit: 3 learned statistic(s) match all rows, including evaluation rows, rather than the training rows: impute.statistics_, scale.mean_, scale.var_
+[FAIL] HIGH     entity_overlap: 313 patient identifiers (uniquepid) appear in both 'train' and 'test'; 349 rows (49.3%) of 'test' are affected.
+[FAIL] HIGH     event_timing: 4,904 events charted before the prediction time but only available after it (4.9% of events, 1,942 prediction units), feeding 16 features.
+[FAIL] HIGH     hindsight_features: 1 feature(s) flagged: unitdischargeoffset
+[FAIL] MEDIUM   event_timing: 881 interval events still running at the prediction time (0.9% of events, 881 prediction units), feeding 4 features.
+
+Test-set performance as each pipeline would report it
+                       clean (honest)  leaky (as reported)
+auroc                           0.862                0.941
+auprc                           0.532                0.783
+brier                           0.072                0.039
+```
+
+The same model looks far better when it is allowed to peek. The demo also prints the paired,
+patient-level bootstrap estimate of the inflation on identical test rows. An example HTML report
+is in [`docs/example_report.html`](docs/example_report.html).
+
+---
+
+## Why this exists
+
+A model that sees the future looks excellent on paper and fails at the bedside. In clinical
+data the future hides in ordinary places:
+
+* billing diagnosis codes that are only assigned after discharge,
+* "worst value in the first 24 hours" scores used by a model that predicts at hour 6,
+* a laboratory result drawn at 10:00 but not available until 14:00,
+* an infusion total that includes the hours after the prediction,
+* a patient's second admission in the test set and first admission in the training set,
+* a scaler or SMOTE step run before the train/test split,
+* a "died in hospital" column sitting in the same table as the predictors.
+
+General-purpose leakage tools inspect code. This package inspects the **data, the timing of
+every event and the fitted pipeline objects**, with knowledge of how clinical databases record
+time, so it catches leaks that code analysis cannot see.
+
+## What it checks
+
+| Family | Check | Leakage it detects |
+|---|---|---|
+| Split integrity | `entity_overlap` | The same patient, admission or stay in more than one split |
+| | `site_overlap` | Hospitals reused in a split described as external |
+| | `duplicate_records` | Identical feature vectors in training and evaluation |
+| | `temporal_order` | Overlapping periods in a split described as temporal, and temporal splits on MIMIC-IV shifted dates |
+| Timing | `event_timing` | Events after the prediction time, results not yet available, intervals crossing the prediction time, undated sources, events after the outcome |
+| | `truncation_invariance` | Features that change when everything after the prediction time is deleted |
+| | `outcome_timing` | Positive cases whose outcome had already happened |
+| | `eligibility_timing` | Cohort criteria that use information from after the prediction time |
+| Feature content | `hindsight_features` | Outcome columns, discharge-time columns, undated billing sources, first-day summaries used too early |
+| | `outcome_proxies` | Do-not-resuscitate, comfort care, palliative care, brain death and related codes or documentation |
+| | `single_feature_dominance` | Single features that separate outcomes almost perfectly, and copies of the label |
+| | `missingness_proxy` | Missingness patterns that encode the outcome |
+| Pipeline | `preprocessing_fit` | Scalers and imputers whose fitted statistics match all rows instead of the training rows |
+| | `synthetic_samples` | SMOTE-style synthetic records inside the evaluation data |
+| | `threshold_selection` | Decision thresholds that coincide with the optimum on the test set |
+| | `declarations` | A record of practices that cannot be verified from data |
+
+Every check runs when its inputs are present and is listed as **not verified** otherwise, so a
+report always shows what was and was not tested. Run `icu-leakage-check taxonomy --full` for the
+complete catalogue of leakage types, with an example and a remedy for each.
+
+## Install
+
+```bash
+pip install icu-leakage-check            # numpy, pandas, scikit-learn only
+pip install "icu-leakage-check[fast]"    # adds duckdb and pyarrow for very large tables
+```
+
+To install from a clone:
+
+```bash
+git clone https://github.com/Krutarth007/icu-leakage-check
+cd icu-leakage-check
+pip install -e ".[dev]"
+pytest
+```
+
+The core package has no compiled dependencies of its own and runs on older laptops.
+Nothing leaves your machine: the package never sends data anywhere.
+
+## Quick start (any dataset)
+
+```python
+from icu_leakage_check import audit
+
+result = audit(
+    features,                    # one row per prediction instance
+    label="died",
+    split="split",               # train / valid / test
+    patient_id="patient_id",
+    index_time="prediction_time",
+)
+print(result.summary())
+result.to_html("leakage_report.html")
+```
+
+`result` can also be exported with `to_frame()`, `to_json()` and `to_markdown()`. In a notebook
+it renders as a formatted report. `result.leaky_features("high")` returns the features to drop.
+
+## Working with MIMIC-IV and eICU-CRD
+
+### 1. Point the package at your files
+
+Tables can be stored as `.csv.gz`, `.csv`, `.parquet`, or in a folder named like the file
+(`lab.csv/lab.csv`), with or without the `hosp` and `icu` folders.
+
+```bash
+icu-leakage-check locate --dataset eicu     --root "C:\data\eicu-collaborative-research-database-2.0"
+icu-leakage-check locate --dataset mimic-iv --root "C:\data\mimic-iv-2.2"
+```
+
+Optional, and strongly recommended for the large event tables: convert once to Parquet.
+
+```bash
+icu-leakage-check convert --dataset eicu --root "C:\data\eicu-collaborative-research-database-2.0" --out "C:\data\eicu_parquet" --memory-limit 4GB --temp-dir "C:\data\tmp"
+```
+
+### 2. Read only what you need
+
+```python
+from icu_leakage_check import read_table
+
+patient = read_table(root, "patient", "eicu")
+lab = read_table(root, "lab", "eicu",
+                 columns=["patientunitstayid", "labname", "labresult", "labresultoffset", "labresultrevisedoffset"],
+                 filters={"patientunitstayid": cohort_ids})
+```
+
+Filters are applied while reading, so a 40-million-row table never needs to fit in memory.
+
+### 3. Build features that cannot leak
+
+```python
+from icu_leakage_check import events_from_table, build_window_features
+
+events = events_from_table(lab, "lab", "eicu")      # knows which column is the result time
+index = cohort[["patientunitstayid"]].rename(columns={"patientunitstayid": "entity_id"})
+index["index_time"] = 1440                          # predict at 24 hours
+
+features, provenance = build_window_features(events, index, window=1440, return_provenance=True)
+```
+
+By default events are filtered on the time they became **available** (`storetime` in MIMIC-IV,
+entry offsets in eICU-CRD), interval events are prorated at the prediction time, date-only
+rows count as available at the end of their day and undated billing codes are never used for
+the same encounter. Setting `cutoff="none"` or `time_basis="event"` creates deliberately leaky
+versions for comparison.
+
+### 4. Audit with full provenance
+
+```python
+from icu_leakage_check import LeakageAudit
+
+result = LeakageAudit(
+    data, label="died", split="split", dataset="eicu",
+    index_time="index_offset", outcome_time="death_offset",
+    calendar_time="hospitaldischargeyear",
+    events=provenance,                         # what each feature was built from
+    preprocessor=fitted_pipeline,              # inspected for fitting on test rows
+    feature_sources={"apachescore": "apachePatientResult.apachescore"},
+    split_strategy="patient",
+).run()
+```
+
+With `dataset` set, patient, encounter, stay and hospital identifiers are recognised
+automatically when the columns exist.
+
+### 5. Measure what a leak is worth
+
+```python
+from icu_leakage_check import leakage_impact
+
+leakage_impact(y_test, clean_scores, leaky_scores, n_boot=1000, groups=patient_ids_test)
+```
+
+This returns each metric (AUROC, AUPRC, Brier score, calibration slope and intercept, ECE) for
+both pipelines, the paired difference with a bootstrap interval and a p-value. Resampling by
+patient is supported.
+
+## Command line and continuous integration
+
+```bash
+icu-leakage-check audit --data features.parquet --label died --split split \
+    --dataset eicu --index-time index_offset --html report.html --json report.json --fail-on high
+```
+
+The exit code is `1` when any finding reaches the `--fail-on` severity, so the audit can block a
+model release in CI:
+
+```yaml
+- run: pip install icu-leakage-check
+- run: icu-leakage-check audit --config audit.json --fail-on high
+```
+
+Other commands: `scan` (screen column names only), `schema` (show the timing registry),
+`taxonomy`, `checks`, `locate` and `convert`.
+
+## Who uses this and for what
+
+* **Hospital AI governance and model risk committees.** Run the audit on every internally built
+  or vendor-supplied model before deployment and keep the HTML report as evidence.
+* **Health plans, payers and health-tech teams.** Validate risk models built on claims and EHR
+  extracts, where discharge-time codes and repeat members are common sources of leakage.
+* **Regulatory and quality documentation.** The report gives direct evidence for the FDA, Health
+  Canada and MHRA Good Machine Learning Practice principle that *training data sets are independent
+  of test sets*, and supports the validity-on-test-data information required for predictive
+  decision support interventions under the ONC HTI-1 rule.
+* **MLOps.** Use it as a release gate in CI so leaky pipelines never reach production.
+* **Researchers, reviewers and educators.** Check a pipeline before submission, verify a
+  shared code base during review, or teach leakage with real clinical schemas.
+
+## Severity and status
+
+| Status | Meaning |
+|---|---|
+| `fail` | Leakage detected |
+| `warn` | Strong signal that needs a human decision (for example an outcome proxy that may have been documented before the prediction) |
+| `pass` | The check ran and found nothing |
+| `skipped` | Inputs for the check were not provided |
+
+Severities run from `info` to `critical`. `critical` means the reported performance cannot be
+trusted until the issue is fixed.
+
+## Extending
+
+```python
+from icu_leakage_check import Check, register
+from icu_leakage_check.findings import Severity, Status
+
+@register
+class NoNightShiftFeature(Check):
+    check_id = "no_night_shift"
+    leakage_type = "HINDSIGHT_VARIABLE"
+    title = "Example custom rule"
+
+    def run(self, ctx):
+        bad = [c for c in ctx.feature_columns if c.endswith("_night")]
+        if bad:
+            return [self.finding(Status.WARN, Severity.LOW, "Night-shift features present.", affected=bad)]
+        return [self.passed("No night-shift features.")]
+
+LeakageAudit(df, "y", "split").run(checks=["entity_overlap", "no_night_shift"])
+```
+
+## Data use
+
+MIMIC-IV and eICU-CRD are credentialed datasets. Keep them on your own machine, never commit
+them or patient-level outputs to a repository, and follow the PhysioNet data use agreement. The
+open demo versions of both databases on PhysioNet are suitable for tutorials and automated tests.
+
+## Citing
+
+If you use the package, please cite it using the metadata in [`CITATION.cff`](CITATION.cff).
+
+## Licence
+
+MIT. See [`LICENSE`](LICENSE).

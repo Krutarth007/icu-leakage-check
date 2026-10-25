@@ -1,0 +1,269 @@
+<!doctype html><html lang='en'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1'><title>Leakage audit report</title><style>body{margin:0;background:var(--bg)}
+:root{--bg:#ffffff;--fg:#1d2433;--muted:#5b6475;--line:#e3e6ec;--card:#f7f8fa;
+--fail:#b42318;--failbg:#fde8e7;--warn:#8a5a00;--warnbg:#fff3d6;--pass:#1a7f37;--passbg:#e6f4ea;--skip:#5b6475;--skipbg:#eef0f3}
+@media (prefers-color-scheme: dark){:root{--bg:#12151b;--fg:#e6e9ef;--muted:#9aa3b2;--line:#2a303b;--card:#1a1f27;
+--fail:#ff8a80;--failbg:#3a1714;--warn:#ffd27a;--warnbg:#3a2c0d;--pass:#7ee2a0;--passbg:#12301d;--skip:#a9b1bf;--skipbg:#232934}}
+.ilc{font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--fg);background:var(--bg);line-height:1.45;max-width:1100px;margin:0 auto;padding:16px}
+.ilc h1{font-size:1.5rem;margin:0 0 4px}.ilc h2{font-size:1.15rem;margin:28px 0 8px}
+.ilc .meta{color:var(--muted);font-size:.9rem}
+.ilc .verdict{font-size:1.1rem;font-weight:600;margin:14px 0;padding:10px 14px;border-radius:8px;background:var(--card);border:1px solid var(--line)}
+.ilc .tiles{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0}
+.ilc .tile{flex:1 1 120px;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:10px 12px}
+.ilc .tile b{display:block;font-size:1.4rem}
+.ilc table{border-collapse:collapse;width:100%;font-size:.9rem}
+.ilc th,.ilc td{border-bottom:1px solid var(--line);padding:8px 6px;text-align:left;vertical-align:top}
+.ilc th{color:var(--muted);font-weight:600}
+.ilc .chip{display:inline-block;padding:1px 8px;border-radius:999px;font-size:.78rem;font-weight:600;white-space:nowrap}
+.ilc .fail{color:var(--fail);background:var(--failbg)}.ilc .warn{color:var(--warn);background:var(--warnbg)}
+.ilc .pass{color:var(--pass);background:var(--passbg)}.ilc .skipped{color:var(--skip);background:var(--skipbg)}
+.ilc details{margin-top:6px}.ilc summary{cursor:pointer;color:var(--muted)}
+.ilc pre{white-space:pre-wrap;word-break:break-word;background:var(--card);border:1px solid var(--line);border-radius:6px;padding:8px;font-size:.8rem;max-height:320px;overflow:auto}
+.ilc .fix{color:var(--muted);font-size:.85rem;margin-top:4px}
+.ilc .wrap{overflow-x:auto}
+</style></head><body>
+<div class="ilc">
+<h1>Leakage audit report</h1>
+<div class="meta">icu-leakage-check 0.1.0 · 2026-10-15T03:00:16Z · dataset: eicu
+ · rows: 2354 · features: 24 · label: died · split strategy: random</div>
+<div class="verdict">Leakage detected</div>
+<div class="tiles">
+ <div class="tile"><span class="chip fail">FAIL</span><b>7</b></div>
+ <div class="tile"><span class="chip warn">WARN</span><b>0</b></div>
+ <div class="tile"><span class="chip pass">PASS</span><b>9</b></div>
+ <div class="tile"><span class="chip skipped">SKIP</span><b>4</b></div>
+</div>
+<h2>Splits</h2><div class='wrap'><table><tr><th>Split</th><th>Rows</th><th>Prevalence</th></tr><tr><td>train</td><td>1646</td><td>0.113</td></tr><tr><td>test</td><td>708</td><td>0.0918</td></tr></table></div>
+<h2>Findings</h2>
+<div class="wrap"><table>
+<tr><th>Status</th><th>Severity</th><th>Check</th><th>Finding</th><th>Affected</th></tr>
+<tr><td><span class='chip fail'>FAIL</span></td><td>critical</td><td><b>Features use events after the prediction time</b><div class='meta'>event_timing · Information recorded after the prediction time</div></td><td>42,641 events recorded after the prediction time (42.7% of events, 2,352 prediction units), feeding 20 features.<div class='fix'>Fix: Restrict every feature to events at or before the prediction time.</div><details><summary>Evidence</summary><pre>{
+  &quot;events_flagged&quot;: 42641,
+  &quot;events_checked&quot;: 99898,
+  &quot;fraction_of_events&quot;: 0.4268,
+  &quot;entities_affected&quot;: 2352,
+  &quot;events_by_source&quot;: {
+    &quot;lactate__&quot;: 10663,
+    &quot;potassium__&quot;: 10616,
+    &quot;wbc__&quot;: 10502,
+    &quot;creatinine__&quot;: 10460,
+    &quot;norepinephrine__&quot;: 400
+  },
+  &quot;affected_kind&quot;: &quot;feature&quot;,
+  &quot;median_hours_after_prediction&quot;: 15.34
+}</pre></details></td><td>lactate__last, lactate__max, lactate__mean, lactate__sum, potassium__last, potassium__max, potassium__mean, potassium__sum, wbc__last, wbc__max, wbc__mean, wbc__sum <span class='meta'>(+8 more)</span></td></tr><tr><td><span class='chip fail'>FAIL</span></td><td>critical</td><td><b>Features use events after the outcome</b><div class='meta'>event_timing · Information recorded after the prediction time</div></td><td>6 events are recorded at or after the outcome itself.<div class='fix'>Fix: Restrict every feature to events at or before the prediction time.</div><details><summary>Evidence</summary><pre>{
+  &quot;events_flagged&quot;: 6,
+  &quot;events_by_source&quot;: {
+    &quot;norepinephrine__&quot;: 6
+  },
+  &quot;affected_kind&quot;: &quot;feature&quot;
+}</pre></details></td><td>norepinephrine__last, norepinephrine__max, norepinephrine__mean, norepinephrine__sum</td></tr><tr><td><span class='chip fail'>FAIL</span></td><td>critical</td><td><b>Learned preprocessing fitted on evaluation data</b><div class='meta'>preprocessing_fit · Preprocessing fitted on evaluation data</div></td><td>3 learned statistic(s) match all rows, including evaluation rows, rather than the training rows: impute.statistics_, scale.mean_, scale.var_<div class='fix'>Fix: Fit every learned transformation on the training split only, ideally inside a Pipeline.</div><details><summary>Evidence</summary><pre>{
+  &quot;steps&quot;: [
+    {
+      &quot;step&quot;: &quot;impute&quot;,
+      &quot;transformer&quot;: &quot;SimpleImputer&quot;,
+      &quot;attribute&quot;: &quot;statistics_&quot;,
+      &quot;matches&quot;: &quot;all rows&quot;,
+      &quot;distinguishable_columns&quot;: 21
+    },
+    {
+      &quot;step&quot;: &quot;scale&quot;,
+      &quot;transformer&quot;: &quot;StandardScaler&quot;,
+      &quot;attribute&quot;: &quot;mean_&quot;,
+      &quot;matches&quot;: &quot;all rows&quot;,
+      &quot;distinguishable_columns&quot;: 24
+    },
+    {
+      &quot;step&quot;: &quot;scale&quot;,
+      &quot;transformer&quot;: &quot;StandardScaler&quot;,
+      &quot;attribute&quot;: &quot;var_&quot;,
+      &quot;matches&quot;: &quot;all rows&quot;,
+      &quot;distinguishable_columns&quot;: 24
+    }
+  ],
+  &quot;affected_kind&quot;: &quot;step&quot;
+}</pre></details></td><td>impute.statistics_, scale.mean_, scale.var_</td></tr><tr><td><span class='chip fail'>FAIL</span></td><td>high</td><td><b>Patients or encounters shared between splits</b><div class='meta'>entity_overlap · Entity overlap across splits</div></td><td>313 patient identifiers (uniquepid) appear in both &#x27;train&#x27; and &#x27;test&#x27;; 349 rows (49.3%) of &#x27;test&#x27; are affected.<div class='fix'>Fix: Split at the patient level (or higher) and keep all of a patient&#x27;s records in one split.</div><details><summary>Evidence</summary><pre>{
+  &quot;level&quot;: &quot;patient&quot;,
+  &quot;column&quot;: &quot;uniquepid&quot;,
+  &quot;splits&quot;: [
+    &quot;train&quot;,
+    &quot;test&quot;
+  ],
+  &quot;shared_ids&quot;: 313,
+  &quot;rows_in_test_affected&quot;: 349,
+  &quot;fraction_of_test_rows&quot;: 0.4929,
+  &quot;example_ids&quot;: [
+    &quot;D00001&quot;,
+    &quot;D00005&quot;,
+    &quot;D00011&quot;,
+    &quot;D00021&quot;,
+    &quot;D00022&quot;,
+    &quot;D00035&quot;,
+    &quot;D00041&quot;,
+    &quot;D00043&quot;,
+    &quot;D00044&quot;,
+    &quot;D00047&quot;
+  ],
+  &quot;affected_kind&quot;: &quot;id&quot;
+}</pre></details></td><td>D00001, D00005, D00011, D00021, D00022, D00035, D00041, D00043, D00044, D00047</td></tr><tr><td><span class='chip fail'>FAIL</span></td><td>high</td><td><b>Features use results not yet available</b><div class='meta'>event_timing · Charted before but not available at prediction time</div></td><td>4,904 events charted before the prediction time but only available after it (4.9% of events, 1,942 prediction units), feeding 16 features.<div class='fix'>Fix: Filter on the storage or entry time rather than the clinical time.</div><details><summary>Evidence</summary><pre>{
+  &quot;events_flagged&quot;: 4904,
+  &quot;events_checked&quot;: 99898,
+  &quot;fraction_of_events&quot;: 0.0491,
+  &quot;entities_affected&quot;: 1942,
+  &quot;events_by_source&quot;: {
+    &quot;lactate__&quot;: 1248,
+    &quot;wbc__&quot;: 1231,
+    &quot;potassium__&quot;: 1226,
+    &quot;creatinine__&quot;: 1199
+  },
+  &quot;affected_kind&quot;: &quot;feature&quot;,
+  &quot;median_hours_until_available&quot;: 1.24
+}</pre></details></td><td>lactate__last, lactate__max, lactate__mean, lactate__sum, wbc__last, wbc__max, wbc__mean, wbc__sum, potassium__last, potassium__max, potassium__mean, potassium__sum <span class='meta'>(+4 more)</span></td></tr><tr><td><span class='chip fail'>FAIL</span></td><td>high</td><td><b>Features only known in hindsight</b><div class='meta'>hindsight_features · Hindsight variable</div></td><td>1 feature(s) flagged: unitdischargeoffset<div class='fix'>Fix: Remove the variable or replace it with a version truncated at the prediction time.</div><details><summary>Evidence</summary><pre>{
+  &quot;reasons&quot;: {
+    &quot;unitdischargeoffset&quot;: &quot;name matches hindsight column in patient&quot;
+  },
+  &quot;affected_kind&quot;: &quot;feature&quot;
+}</pre></details></td><td>unitdischargeoffset</td></tr><tr><td><span class='chip fail'>FAIL</span></td><td>medium</td><td><b>Interval events cross the prediction time</b><div class='meta'>event_timing · Interval events crossing the prediction time</div></td><td>881 interval events still running at the prediction time (0.9% of events, 881 prediction units), feeding 4 features.<div class='fix'>Fix: Truncate interval events at the prediction time or prorate their amounts.</div><details><summary>Evidence</summary><pre>{
+  &quot;events_flagged&quot;: 881,
+  &quot;events_checked&quot;: 99898,
+  &quot;fraction_of_events&quot;: 0.0088,
+  &quot;entities_affected&quot;: 881,
+  &quot;events_by_source&quot;: {
+    &quot;norepinephrine__&quot;: 881
+  },
+  &quot;affected_kind&quot;: &quot;feature&quot;
+}</pre></details></td><td>norepinephrine__last, norepinephrine__max, norepinephrine__mean, norepinephrine__sum</td></tr><tr><td><span class='chip pass'>PASS</span></td><td></td><td><b>Identical feature vectors in training and evaluation</b><div class='meta'>duplicate_records · Duplicate records across splits</div></td><td>No row of &#x27;test&#x27; duplicates a training row.<details><summary>Evidence</summary><pre>{
+  &quot;duplicates&quot;: 0,
+  &quot;test_rows&quot;: 708,
+  &quot;fraction&quot;: 0.0,
+  &quot;affected_kind&quot;: &quot;row&quot;
+}</pre></details></td><td></td></tr><tr><td><span class='chip pass'>PASS</span></td><td></td><td><b>Timing of the events used to build features</b><div class='meta'>event_timing · Undated or day-resolution sources</div></td><td>No events without any time stamp.<details><summary>Evidence</summary><pre>{
+  &quot;events_checked&quot;: 99898
+}</pre></details></td><td></td></tr><tr><td><span class='chip pass'>PASS</span></td><td></td><td><b>Missingness patterns that predict the outcome</b><div class='meta'>missingness_proxy · Missingness pattern encodes the outcome</div></td><td>No missingness indicator reaches an AUROC of 0.8.<details><summary>Evidence</summary><pre>{
+  &quot;features_scored&quot;: 4,
+  &quot;top_missingness_auroc&quot;: {
+    &quot;norepinephrine__last&quot;: {
+      &quot;auroc&quot;: 0.6047,
+      &quot;missing_rate&quot;: 0.39
+    },
+    &quot;norepinephrine__max&quot;: {
+      &quot;auroc&quot;: 0.6047,
+      &quot;missing_rate&quot;: 0.39
+    },
+    &quot;norepinephrine__mean&quot;: {
+      &quot;auroc&quot;: 0.6047,
+      &quot;missing_rate&quot;: 0.39
+    },
+    &quot;norepinephrine__sum&quot;: {
+      &quot;auroc&quot;: 0.6047,
+      &quot;missing_rate&quot;: 0.39
+    }
+  },
+  &quot;affected_kind&quot;: &quot;feature&quot;
+}</pre></details></td><td></td></tr><tr><td><span class='chip pass'>PASS</span></td><td></td><td><b>Features that act as proxies for the outcome</b><div class='meta'>outcome_proxies · Outcome proxy</div></td><td>No outcome proxies recognised among 24 features.<details><summary>Evidence</summary><pre>{}</pre></details></td><td></td></tr><tr><td><span class='chip pass'>PASS</span></td><td></td><td><b>Outcome already present at prediction time</b><div class='meta'>outcome_timing · Outcome already present at prediction time</div></td><td>Every positive instance has its outcome after the prediction time.<details><summary>Evidence</summary><pre>{
+  &quot;positives_with_time&quot;: 251,
+  &quot;outcome_at_or_before_prediction&quot;: 0,
+  &quot;fraction&quot;: 0.0,
+  &quot;median_lead_hours&quot;: 10.71,
+  &quot;lead_hours_quantiles&quot;: {
+    &quot;0.1&quot;: 3.33,
+    &quot;0.25&quot;: 4.15,
+    &quot;0.5&quot;: 10.71,
+    &quot;0.75&quot;: 26.42
+  },
+  &quot;affected_kind&quot;: &quot;row&quot;
+}</pre></details></td><td></td></tr><tr><td><span class='chip pass'>PASS</span></td><td></td><td><b>Single features that separate the outcome almost perfectly</b><div class='meta'>single_feature_dominance · Implausibly strong single feature</div></td><td>No single feature exceeds a univariate AUROC of 0.9 (highest: lactate__last at 0.876).<details><summary>Evidence</summary><pre>{
+  &quot;features_scored&quot;: 24,
+  &quot;top_univariate_auroc&quot;: {
+    &quot;lactate__last&quot;: 0.8762,
+    &quot;lactate__max&quot;: 0.8533,
+    &quot;lactate__mean&quot;: 0.8446,
+    &quot;creatinine__mean&quot;: 0.8299,
+    &quot;creatinine__last&quot;: 0.8063,
+    &quot;creatinine__max&quot;: 0.8049,
+    &quot;wbc__mean&quot;: 0.8047,
+    &quot;lactate__sum&quot;: 0.7677,
+    &quot;wbc__last&quot;: 0.7607,
+    &quot;norepinephrine__last&quot;: 0.7326,
+    &quot;norepinephrine__max&quot;: 0.7326,
+    &quot;norepinephrine__mean&quot;: 0.7326,
+    &quot;norepinephrine__sum&quot;: 0.7326,
+    &quot;wbc__max&quot;: 0.7305,
+    &quot;gcs&quot;: 0.7272
+  },
+  &quot;rows_used&quot;: 1646,
+  &quot;affected_kind&quot;: &quot;feature&quot;
+}</pre></details></td><td></td></tr><tr><td><span class='chip pass'>PASS</span></td><td></td><td><b>Sites shared between training and evaluation</b><div class='meta'>site_overlap · Site overlap in a claimed external validation</div></td><td>&#x27;test&#x27; shares 30 sites with training, so it measures internal rather than external performance.<details><summary>Evidence</summary><pre>{
+  &quot;train_sites&quot;: 30,
+  &quot;test_sites&quot;: 30,
+  &quot;shared_sites&quot;: 30,
+  &quot;example_sites&quot;: [
+    &quot;1&quot;,
+    &quot;10&quot;,
+    &quot;11&quot;,
+    &quot;12&quot;,
+    &quot;13&quot;,
+    &quot;14&quot;,
+    &quot;15&quot;,
+    &quot;16&quot;,
+    &quot;17&quot;,
+    &quot;18&quot;
+  ],
+  &quot;affected_kind&quot;: &quot;id&quot;
+}</pre></details></td><td></td></tr><tr><td><span class='chip pass'>PASS</span></td><td></td><td><b>Synthetic minority records in evaluation data</b><div class='meta'>synthetic_samples · Synthetic or resampled records in evaluation data</div></td><td>No synthetic-record signature in evaluation data.<details><summary>Evidence</summary><pre>{
+  &quot;integer_valued_columns_used&quot;: [
+    &quot;age&quot;,
+    &quot;gcs&quot;,
+    &quot;vent_day1&quot;,
+    &quot;unitdischargeoffset&quot;
+  ],
+  &quot;continuous_columns_used&quot;: [
+    &quot;creatinine__last&quot;,
+    &quot;creatinine__max&quot;,
+    &quot;creatinine__mean&quot;,
+    &quot;creatinine__sum&quot;,
+    &quot;lactate__last&quot;,
+    &quot;lactate__max&quot;,
+    &quot;lactate__mean&quot;,
+    &quot;lactate__sum&quot;,
+    &quot;potassium__last&quot;,
+    &quot;potassium__max&quot;,
+    &quot;potassium__mean&quot;,
+    &quot;potassium__sum&quot;,
+    &quot;wbc__last&quot;,
+    &quot;wbc__max&quot;,
+    &quot;wbc__mean&quot;,
+    &quot;wbc__sum&quot;
+  ],
+  &quot;by_split&quot;: {
+    &quot;train&quot;: {
+      &quot;minority_rows&quot;: 186,
+      &quot;minority_fractional_in_integer_columns&quot;: 0.0,
+      &quot;majority_fractional_in_integer_columns&quot;: 0.0,
+      &quot;minority_on_segment_between_neighbours&quot;: 0.0,
+      &quot;prevalence&quot;: 0.113
+    },
+    &quot;test&quot;: {
+      &quot;minority_rows&quot;: 65,
+      &quot;minority_fractional_in_integer_columns&quot;: 0.0,
+      &quot;majority_fractional_in_integer_columns&quot;: 0.0,
+      &quot;minority_on_segment_between_neighbours&quot;: 0.0,
+      &quot;prevalence&quot;: 0.0918
+    }
+  },
+  &quot;affected_kind&quot;: &quot;split&quot;
+}</pre></details></td><td></td></tr><tr><td><span class='chip pass'>PASS</span></td><td></td><td><b>Temporal order of training and evaluation periods</b><div class='meta'>temporal_order · Temporal order violation</div></td><td>Periods recorded for information; the split is not described as temporal (&#x27;test&#x27;).<details><summary>Evidence</summary><pre>{
+  &quot;time_column&quot;: &quot;hospitaldischargeyear&quot;,
+  &quot;train_range&quot;: [
+    &quot;2014&quot;,
+    &quot;2015&quot;
+  ],
+  &quot;test_range&quot;: [
+    &quot;2014&quot;,
+    &quot;2015&quot;
+  ],
+  &quot;train_rows_at_or_after_eval_start&quot;: 1646,
+  &quot;fraction_train_at_or_after_eval_start&quot;: 1.0
+}</pre></details></td><td></td></tr>
+</table></div>
+<h2>Not verified</h2><div class='wrap'><table><tr><th>Check</th><th>Reason</th></tr><tr><td>truncation_invariance</td><td>Not run: feature_builder; raw_events</td></tr><tr><td>eligibility_timing</td><td>Not run: eligibility_time</td></tr><tr><td>threshold_selection</td><td>Not run: threshold</td></tr><tr><td>declarations</td><td>No declarations supplied. Items that cannot be verified from data: preprocessing_fitted_on_training_only, feature_selection_on_training_only, resampling_inside_training_only, hyperparameters_tuned_without_test, threshold_chosen_without_test, test_set_used_once, cohort_defined_at_prediction_time, outcome_window_after_prediction_time</td></tr></table></div>
+</div></body></html>

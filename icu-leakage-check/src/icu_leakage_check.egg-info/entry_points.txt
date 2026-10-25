@@ -1,0 +1,2 @@
+[console_scripts]
+icu-leakage-check = icu_leakage_check.cli:main
