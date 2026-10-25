@@ -1,0 +1,5 @@
+database,task,events,median hours after prediction,within 6 h,within 24 h,within 48 h
+MIMIC-IV,in-hospital mortality,6344,129.37,0.0406683,0.144388,0.251261
+MIMIC-IV,AKI 24 to 72 h,6096,16.0811,0.204724,0.736056,1
+eICU-CRD,in-hospital mortality,11832,99.9167,0.0476673,0.171062,0.297921
+eICU-CRD,AKI 24 to 72 h,9901,14.2333,0.192304,0.700434,1

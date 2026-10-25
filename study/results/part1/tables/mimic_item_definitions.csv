@@ -1,0 +1,46 @@
+table,itemid,variable,label_in_database
+chartevents,220045,heart_rate,Heart Rate
+chartevents,220210,resp_rate,Respiratory Rate
+chartevents,224690,resp_rate,Respiratory Rate (Total)
+chartevents,220277,spo2,O2 saturation pulseoxymetry
+chartevents,223762,temperature,Temperature Celsius
+chartevents,223761,temperature_f,Temperature Fahrenheit
+chartevents,220052,map_invasive,Arterial Blood Pressure mean
+chartevents,220181,map_nibp,Non Invasive Blood Pressure mean
+chartevents,220179,sbp_nibp,Non Invasive Blood Pressure systolic
+chartevents,220739,gcs_eye,GCS - Eye Opening
+chartevents,223900,gcs_verbal,GCS - Verbal Response
+chartevents,223901,gcs_motor,GCS - Motor Response
+chartevents,223758,code_status,Code Status
+labevents,50813,lactate,Lactate
+labevents,50912,creatinine,Creatinine
+labevents,51006,bun,Urea Nitrogen
+labevents,51301,wbc,White Blood Cells
+labevents,51265,platelets,Platelet Count
+labevents,50971,potassium,Potassium
+labevents,50983,sodium,Sodium
+labevents,50882,bicarbonate,Bicarbonate
+labevents,50885,bilirubin,"Bilirubin, Total"
+labevents,51222,hemoglobin,Hemoglobin
+labevents,50931,glucose,Glucose
+labevents,50820,ph,pH
+outputevents,226559,urine_output,Foley
+outputevents,226560,urine_output,Void
+outputevents,226561,urine_output,Condom Cath
+outputevents,226584,urine_output,Ileoconduit
+outputevents,226563,urine_output,Suprapubic
+outputevents,226564,urine_output,R Nephrostomy
+outputevents,226565,urine_output,L Nephrostomy
+outputevents,226567,urine_output,Straight Cath
+outputevents,226557,urine_output,R Ureteral Stent
+outputevents,226558,urine_output,L Ureteral Stent
+outputevents,227488,urine_output,GU Irrigant Volume In
+outputevents,227489,urine_output,GU Irrigant/Urine Volume Out
+inputevents,221906,norepinephrine,Norepinephrine
+inputevents,221289,epinephrine,Epinephrine
+inputevents,222315,vasopressin,Vasopressin
+inputevents,221749,phenylephrine,Phenylephrine
+inputevents,221662,dopamine,Dopamine
+inputevents,221653,dobutamine,Dobutamine
+procedureevents,225792,invasive_ventilation,Invasive Ventilation
+procedureevents,225794,noninvasive_ventilation,Non-invasive Ventilation

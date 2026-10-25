@@ -1,0 +1,10 @@
+database,timing_class,tables
+mimic-iv,date_only,3
+mimic-iv,dictionary,7
+mimic-iv,linked,2
+mimic-iv,static,3
+mimic-iv,timed,14
+mimic-iv,untimed,2
+eicu,first_day,3
+eicu,static,2
+eicu,timed,26

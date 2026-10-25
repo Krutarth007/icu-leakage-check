@@ -1,0 +1,60 @@
+database,table,column,role
+mimic-iv,admissions,deathtime,outcome
+mimic-iv,admissions,hospital_expire_flag,outcome
+mimic-iv,admissions,dischtime,hindsight
+mimic-iv,admissions,discharge_location,hindsight
+mimic-iv,patients,dod,outcome
+mimic-iv,diagnoses_icd,icd_code,hindsight
+mimic-iv,diagnoses_icd,seq_num,hindsight
+mimic-iv,diagnoses_icd,(whole table),undated
+mimic-iv,procedures_icd,seq_num,hindsight
+mimic-iv,drgcodes,drg_type,hindsight
+mimic-iv,drgcodes,drg_code,hindsight
+mimic-iv,drgcodes,description,hindsight
+mimic-iv,drgcodes,drg_severity,hindsight
+mimic-iv,drgcodes,drg_mortality,hindsight
+mimic-iv,drgcodes,(whole table),undated
+mimic-iv,pharmacy,status,hindsight
+mimic-iv,poe,order_status,hindsight
+mimic-iv,poe,discontinued_by_poe_id,hindsight
+mimic-iv,icustays,outtime,hindsight
+mimic-iv,icustays,los,hindsight
+mimic-iv,icustays,last_careunit,hindsight
+mimic-iv,inputevents,statusdescription,hindsight
+mimic-iv,ingredientevents,statusdescription,hindsight
+mimic-iv,procedureevents,statusdescription,hindsight
+eicu,patient,hospitaldischargestatus,outcome
+eicu,patient,unitdischargestatus,outcome
+eicu,patient,hospitaldischargeoffset,hindsight
+eicu,patient,hospitaldischargelocation,hindsight
+eicu,patient,hospitaldischargetime24,hindsight
+eicu,patient,unitdischargeoffset,hindsight
+eicu,patient,unitdischargelocation,hindsight
+eicu,patient,unitdischargetime24,hindsight
+eicu,patient,dischargeweight,hindsight
+eicu,microLab,organism,hindsight
+eicu,microLab,antibiotic,hindsight
+eicu,microLab,sensitivitylevel,hindsight
+eicu,medication,drugordercancelled,hindsight
+eicu,diagnosis,activeupondischarge,hindsight
+eicu,treatment,activeupondischarge,hindsight
+eicu,carePlanGeneral,activeupondischarge,hindsight
+eicu,carePlanEOL,activeupondischarge,hindsight
+eicu,carePlanGoal,activeupondischarge,hindsight
+eicu,carePlanGoal,cplgoalstatus,hindsight
+eicu,carePlanCareProvider,activeupondischarge,hindsight
+eicu,carePlanInfectiousDisease,activeupondischarge,hindsight
+eicu,carePlanInfectiousDisease,responsetotherapy,hindsight
+eicu,apacheApsVar,24 columns,first-day summary
+eicu,apachePredVar,diedinhospital,outcome
+eicu,apachePredVar,dischargelocation,hindsight
+eicu,apachePredVar,21 columns,first-day summary
+eicu,apachePatientResult,actualicumortality,outcome
+eicu,apachePatientResult,actualhospitalmortality,outcome
+eicu,apachePatientResult,actualiculos,hindsight
+eicu,apachePatientResult,actualhospitallos,hindsight
+eicu,apachePatientResult,unabridgedunitlos,hindsight
+eicu,apachePatientResult,unabridgedhosplos,hindsight
+eicu,apachePatientResult,actualventdays,hindsight
+eicu,apachePatientResult,unabridgedactualventdays,hindsight
+eicu,apachePatientResult,7 columns,first-day summary

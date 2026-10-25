@@ -1,0 +1,13 @@
+characteristic,MIMIC-IV,eICU-CRD
+ICU stays,"57,460","129,258"
+patients,"42,067","102,154"
+hospitals,1,205
+"age, median (IQR)",67.0 (55.0 to 77.0),66.0 (54.0 to 76.0)
+female,"24,967 (43.5%)","59,064 (45.7%)"
+first ICU stay of the patient,"42,052 (73.2%)","101,932 (78.9%)"
+in-hospital mortality,"6,344 (11.0%)","11,832 (9.2%)"
+prolonged ICU stay (> 4 days),"16,504 (28.7%)","33,076 (25.6%)"
+AKI-eligible stays,"43,622","105,193"
+AKI 24 to 72 h (eligible stays),"6,096 (14.0%)","9,901 (9.4%)"
+"ICU length of stay, days, median (IQR)",2.4 (1.6 to 4.4),2.3 (1.6 to 4.1)
+"hours from prediction to death, median (IQR)",129.4 (47.8 to 285.4),99.9 (38.5 to 223.0)

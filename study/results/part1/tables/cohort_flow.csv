@@ -1,0 +1,12 @@
+database,step,stays,patients,excluded_stays
+mimic-iv,All ICU stays,73181,50920,0
+mimic-iv,Aged 18 years or older,73181,50920,0
+mimic-iv,Still in the ICU 24 h after admission,57734,42264,15447
+mimic-iv,Alive 24 h after ICU admission,57534,42124,200
+mimic-iv,At least one vital sign available in the first 24 h,57460,42067,74
+eicu,All ICU unit stays,200859,139367,0
+eicu,Aged 18 years or older,200234,138868,625
+eicu,Hospital discharge status recorded,198490,137773,1744
+eicu,Still in the ICU 24 h after admission,131412,103463,67078
+eicu,Alive 24 h after ICU admission,131386,103441,26
+eicu,At least one vital sign available in the first 24 h,129258,102154,2128

@@ -1,0 +1,3 @@
+database,patients with 2 or more stays,share of patients with 2 or more stays,share of stays from such patients,"random row split: test stays linked to a training patient, mean",random row split: 2.5th percentile,random row split: 97.5th percentile,random row split: linked share among test deaths,patient-grouped split: linked share
+MIMIC-IV,9074,0.215704,0.425809,0.353757,0.348225,0.359712,0.344816,0
+eICU-CRD,18761,0.183654,0.354833,0.283265,0.279227,0.287348,0.26477,0

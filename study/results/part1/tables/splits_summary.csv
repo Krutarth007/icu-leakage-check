@@ -1,0 +1,14 @@
+database,scheme,split,rows,prevalence,n_patient_id
+mimic-iv,split_patient,valid,5730,0.108901,4207
+mimic-iv,split_patient,train,40239,0.110639,29446
+mimic-iv,split_patient,test,11491,0.110347,8414
+mimic-iv,split_temporal,train,33861,0.109536,23211
+mimic-iv,split_temporal,test,10780,0.107792,8892
+mimic-iv,split_temporal,valid,12819,0.114908,9964
+eicu,split_patient,train,90513,0.0914786,71507
+eicu,split_patient,test,25792,0.0913849,20431
+eicu,split_patient,valid,12953,0.0922566,10216
+eicu,split_temporal,train,61382,0.091069,50436
+eicu,split_temporal,test,67876,0.0919618,55463
+eicu,split_site,test,26077,0.0877785,21223
+eicu,split_site,train,103181,0.092488,81586

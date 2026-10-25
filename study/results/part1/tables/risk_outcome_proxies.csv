@@ -1,0 +1,8 @@
+database,proxy,deaths with flag (any time),share of deaths (any time),share of survivors (any time),share of deaths (before prediction),share of survivors (before prediction),AUROC any time,AUROC before prediction,note,"hours from first documentation to death, median"
+MIMIC-IV,Code status other than full code (chartevents 223758),1613,0.254256,0.0417482,0.0819672,0.026254,0.606254,0.527857,,49.5667
+MIMIC-IV,"Outcome-proxy ICD code, same admission",4420,0.696721,0.0970733,,,0.799824,,billing codes have no time; never available before prediction,
+MIMIC-IV,"Do-not-resuscitate ICD code (Z66 / V49.86), same admission",3555,0.560372,0.0899327,,,0.73522,,,
+MIMIC-IV,"Palliative care ICD code (Z51.5 / V66.7), same admission",3140,0.494956,0.02688,,,0.734038,,,
+eICU-CRD,Care limitation (carePlanGeneral),7604,0.642664,0.118296,0.247126,0.0823583,0.762184,0.582384,all stays,42.1083
+eICU-CRD,"Care limitation, stays with any care-limitation documentation",7604,0.653602,0.121619,0.251332,0.0846722,0.765991,0.58333,"125,851 stays",42.1083
+eICU-CRD,End-of-life discussion (carePlanEOL),416,0.0351589,0.00512663,0.00735294,0.00221416,0.515016,0.502569,,30.4833
